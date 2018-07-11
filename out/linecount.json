@@ -1,0 +1,1000 @@
+{
+    "extension": "linecount",
+    "version": "0.1.7",
+    "workspace": "c:\\Users\\linof\\OpenrojectPWA\\aktuelle version\\PWA_OP",
+    "linecount": [
+        {
+            "version": "0.1.7",
+            "counttime": "2018-07-10 11:10:01",
+            "filesum": 159,
+            "codesum": 84676,
+            "commentsum": 25986,
+            "blanksum": 2727,
+            "filelist": [
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 1,
+                    "filename": ".editorconfig"
+                },
+                {
+                    "blank": 4,
+                    "code": 18,
+                    "comment": 24,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": ".idea\\inspectionProfiles\\Project_Default.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": ".idea\\modules.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": ".idea\\PWADemo.iml"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": ".idea\\vcs.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 426,
+                    "comment": 0,
+                    "filename": ".idea\\workspace.xml"
+                },
+                {
+                    "blank": 8,
+                    "code": 127,
+                    "comment": 0,
+                    "filename": "angular.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "deploy.sh"
+                },
+                {
+                    "blank": 97,
+                    "code": 341,
+                    "comment": 3,
+                    "filename": "dist\\3rdpartylicenses.txt"
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-144x144.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-152x152.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-192x192.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-384x384.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-512x512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-72x72.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\icons\\icon-96x96.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\assets\\maps.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "dist\\assets\\menuicons\\baseline-arrow_back-24px.svg"
+                },
+                {
+                    "filename": "dist\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 8,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "dist\\index.html"
+                },
+                {
+                    "blank": 24,
+                    "code": 39,
+                    "comment": 23,
+                    "filename": "dist\\main.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\main.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "dist\\manifest.json"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 4,
+                    "filename": "dist\\polyfills.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\polyfills.js.map"
+                },
+                {
+                    "blank": 9,
+                    "code": 44,
+                    "comment": 58,
+                    "filename": "dist\\runtime.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\runtime.js.map"
+                },
+                {
+                    "blank": 42,
+                    "code": 127,
+                    "comment": 53,
+                    "filename": "dist\\styles.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\styles.js.map"
+                },
+                {
+                    "blank": 769,
+                    "code": 59083,
+                    "comment": 24513,
+                    "filename": "dist\\vendor.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\vendor.js.map"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "e2e\\app.e2e-spec.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "e2e\\app.po.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "e2e\\tsconfig.e2e.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 30,
+                    "comment": 3,
+                    "filename": "karma.conf.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "ngsw-config.json"
+                },
+                {
+                    "blank": 37,
+                    "code": 193,
+                    "comment": 1,
+                    "filename": "oppwa\\3rdpartylicenses.txt"
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-144x144.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-152x152.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-192x192.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-384x384.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-512x512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-72x72.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "oppwa\\assets\\icons\\icon-96x96.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "oppwa\\assets\\menuicons\\baseline-arrow_back-24px.svg"
+                },
+                {
+                    "filename": "oppwa\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 8,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "oppwa\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "oppwa\\main.6a6083631b052320e22b.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "oppwa\\manifest.json"
+                },
+                {
+                    "blank": 21,
+                    "code": 1731,
+                    "comment": 888,
+                    "filename": "oppwa\\ngsw-worker.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 72,
+                    "comment": 0,
+                    "filename": "oppwa\\ngsw.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "oppwa\\polyfills.2d976f42c1abc2acac30.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "oppwa\\runtime.6afe30102d8fe7337431.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 6,
+                    "comment": 8,
+                    "filename": "oppwa\\safety-worker.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "oppwa\\styles.a05c2b0878c9f81e1b26.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 6,
+                    "comment": 8,
+                    "filename": "oppwa\\worker-basic.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 14142,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "blank": 3,
+                    "code": 23,
+                    "comment": 2,
+                    "filename": "protractor.conf.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "proxy.config.json"
+                },
+                {
+                    "blank": 13,
+                    "code": 14,
+                    "comment": 5,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "rules.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "run.sh"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "runServer.sh"
+                },
+                {
+                    "blank": 5,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "src\\app\\angular-material\\angular-material.module.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\app\\app-routing.module.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\app.component.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 10,
+                    "comment": 2,
+                    "filename": "src\\app\\app.component.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "src\\app\\app.component.spec.ts"
+                },
+                {
+                    "blank": 22,
+                    "code": 33,
+                    "comment": 9,
+                    "filename": "src\\app\\app.component.ts"
+                },
+                {
+                    "blank": 19,
+                    "code": 61,
+                    "comment": 7,
+                    "filename": "src\\app\\app.module.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 1,
+                    "filename": "src\\app\\app.routes.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\background-sync.service.spec.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\background-sync.service.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\dexieDb\\allWorkPackageDb.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\dexieDb\\dexie-db.service.spec.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 75,
+                    "comment": 56,
+                    "filename": "src\\app\\dexieDb\\dexie-db.service.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\dexieDb\\WorkPackageDb.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\app\\directives\\long-press.directive.spec.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 24,
+                    "comment": 1,
+                    "filename": "src\\app\\directives\\long-press.directive.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\geo-location.service.spec.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 33,
+                    "comment": 3,
+                    "filename": "src\\app\\geo-location.service.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "src\\app\\header\\header.component.css"
+                },
+                {
+                    "blank": 9,
+                    "code": 18,
+                    "comment": 11,
+                    "filename": "src\\app\\header\\header.component.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\header\\header.component.spec.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 59,
+                    "comment": 4,
+                    "filename": "src\\app\\header\\header.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\header\\menu\\menu.component.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 5,
+                    "comment": 10,
+                    "filename": "src\\app\\header\\menu\\menu.component.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\header\\menu\\menu.component.spec.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\app\\header\\menu\\menu.component.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\send-data-snackbar\\handle-snackbar.service.spec.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "src\\app\\send-data-snackbar\\handle-snackbar.service.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\send-data-snackbar\\send-data-snackbar.component.spec.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 53,
+                    "comment": 1,
+                    "filename": "src\\app\\send-data-snackbar\\send-data-snackbar.component.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\check-connection.service.spec.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 24,
+                    "comment": 4,
+                    "filename": "src\\app\\services\\check-connection.service.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\handle-data.service.spec.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 41,
+                    "comment": 8,
+                    "filename": "src\\app\\services\\handle-data.service.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\send-data-to-server.service.spec.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 160,
+                    "comment": 53,
+                    "filename": "src\\app\\services\\send-data-to-server.service.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\update-app.service.spec.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 7,
+                    "comment": 36,
+                    "filename": "src\\app\\update-app.service.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\update-snackbar\\update-snackbar.component.spec.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 11,
+                    "comment": 14,
+                    "filename": "src\\app\\update-snackbar\\update-snackbar.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\camera\\camera.component.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\camera\\camera.component.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\camera\\camera.component.spec.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 34,
+                    "comment": 3,
+                    "filename": "src\\app\\work-packages\\work-package-create\\camera\\camera.component.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\camera\\camera.service.spec.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\camera\\camera.service.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\img-handling.service.spec.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "src\\app\\work-packages\\work-package-create\\img-handling.service.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\work-package-create.component.css"
+                },
+                {
+                    "blank": 9,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\work-package-create.component.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-create\\work-package-create.component.spec.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 41,
+                    "comment": 4,
+                    "filename": "src\\app\\work-packages\\work-package-create\\work-package-create.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-detail.model.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 50,
+                    "comment": 26,
+                    "filename": "src\\app\\work-packages\\work-package-detail\\work-package-detail.component.html"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-detail\\work-package-detail.component.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-detail\\work-package-detail.component.spec.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 86,
+                    "comment": 5,
+                    "filename": "src\\app\\work-packages\\work-package-detail\\work-package-detail.component.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package-detail\\work-package-detail.service.spec.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 62,
+                    "comment": 15,
+                    "filename": "src\\app\\work-packages\\work-package-detail\\work-package-detail.service.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-package.model.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-packages-list.model.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-packages-list\\work-packages-list.component.css"
+                },
+                {
+                    "blank": 22,
+                    "code": 38,
+                    "comment": 43,
+                    "filename": "src\\app\\work-packages\\work-packages-list\\work-packages-list.component.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\work-packages\\work-packages-list\\work-packages-list.component.spec.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 49,
+                    "comment": 2,
+                    "filename": "src\\app\\work-packages\\work-packages-list\\work-packages-list.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\assets\\.gitkeep"
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-144x144.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-152x152.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-192x192.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-384x384.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-512x512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-72x72.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\icons\\icon-96x96.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\maps.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\assets\\menuicons\\baseline-arrow_back-24px.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "src\\environments\\environment.prod.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 4,
+                    "filename": "src\\environments\\environment.ts"
+                },
+                {
+                    "filename": "src\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 6,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\index.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\main.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "src\\manifest.json"
+                },
+                {
+                    "blank": 15,
+                    "code": 2,
+                    "comment": 63,
+                    "filename": "src\\polyfills.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\styles.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 13,
+                    "comment": 4,
+                    "filename": "src\\test.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\tsconfig.app.json"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\tsconfig.spec.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 1,
+                    "filename": "src\\typings.d.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "tsconfig.json"
+                },
+                {
+                    "blank": 14,
+                    "code": 128,
+                    "comment": 0,
+                    "filename": "tslint.json"
+                },
+                {
+                    "blank": 8,
+                    "code": 74,
+                    "comment": 0,
+                    "filename": "yarn-error.log"
+                },
+                {
+                    "blank": 1208,
+                    "code": 5987,
+                    "comment": 0,
+                    "filename": "yarn.lock"
+                }
+            ]
+        }
+    ]
+}

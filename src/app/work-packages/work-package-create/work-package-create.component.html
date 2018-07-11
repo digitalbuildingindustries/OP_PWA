@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutGap="20px">
+
+  <form [formGroup]="worckpackageCreateForm" #formDir="ngForm">
+
+    <mat-form-field [ngStyle]="{'width' : '100%'}">
+      <input name="title" matInput placeholder="Title" formControlName="title" required>
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+          <mat-error *ngIf="title.errors.required">
+            Title is <strong>required </strong>.
+          </mat-error>
+                    </div>
+    </mat-form-field>
+
+
+
+
+    <mat-form-field [ngStyle]="{'width' : '100%'}">
+      <textarea name="description" matInput matTextareaAutosize minRows="6" placeholder="Description" formControlName="description"
+        matAutosizeMinRows="3"></textarea>
+    </mat-form-field>
+
+  </form>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <app-camera></app-camera>
+  </div>
+  <button mat-raised-button [disabled]="!worckpackageCreateForm.valid" (click)="save()">Create Work package</button>
+
+  </div>

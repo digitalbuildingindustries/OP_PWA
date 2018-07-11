@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center"  class="bg">
+
+    <div [ngStyle]="!arrowBack && {'visibility': 'hidden'}">
+        <button mat-icon-button [routerLink]="lastRoute">
+            <i class="material-icons">&#xE5C4;</i>
+
+        </button>
+    </div>
+
+    <div>
+        <button mat-icon-button [matMenuTriggerFor]="workpackageMenu">
+            <i class="material-icons">&#xE145;</i>
+        </button>
+    </div>
+
+    <mat-menu #workpackageMenu="matMenu">
+        <button mat-menu-item routerLink="/work-package-create">Work package</button>
+
+    </mat-menu>
+
+    <!-- 
+    <div>
+        <button mat-icon-button>
+            <i class="material-icons">&#xE8B6;</i>
+        </button>
+    </div> -->
+
+    <!---
+    <i class="material-icons" [ngStyle]="{'line-height' : '1,7'}" id="refresh">
+        refresh
+        </i>    
+    -->
+
+    <mat-toolbar class="bg">
+        <div [ngStyle]="{'font-size' : '14px'}"><b>{{ header }}</b> </div>
+    </mat-toolbar>
+
+</div>

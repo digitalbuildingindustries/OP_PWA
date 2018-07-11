@@ -1,0 +1,6 @@
+{
+"rules": [
+  { "pathname": "/api/v3/projects/testprojekt/work_packages", "method": ["POST"], "dest": "https://lino.openproject.com/api/v3/projects/testprojekt/work_packages" },
+  { "pathname": "/api/v3/work_packages/*", "method": ["GET"], "dest": "https://lino.openproject.com/api/v3/work_packages/*" }
+ ]
+}

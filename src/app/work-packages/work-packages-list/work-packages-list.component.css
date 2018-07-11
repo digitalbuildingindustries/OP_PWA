@@ -1,0 +1,19 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  .nts {
+    justify-content: center;
+    font-size: 12px;
+  }
+  table {
+    width: 100%;
+  }
+

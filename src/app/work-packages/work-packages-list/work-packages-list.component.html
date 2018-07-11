@@ -1,0 +1,103 @@
+<!--
+<div class="example-container mat-elevation-z8" routerLink="/work-package-tab">
+  <mat-table #table [dataSource]="workpackages">
+  -->
+<!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+<!-- id
+<!--
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> id</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- subject --
+    <ng-container matColumnDef="subject">
+      <mat-header-cell *matHeaderCellDef> Subject</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subject}} </mat-cell>
+    </ng-container>
+
+    <!-- type --
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+    </ng-container>
+
+    <!-- status --
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    </ng-container>
+
+    <!-- assignee --
+    <ng-container matColumnDef="assignee">
+      <mat-header-cell *matHeaderCellDef> Assignee </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.assignee}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div> -->
+
+<table mat-table [dataSource]="localStorageAll">
+
+    <!-- id -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef fxFlex="50%"> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="workPackageDetailService.getWorkPackage(element)" routerLink="/work-package-detail"
+        fxFlex="50%">
+        {{element.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef fxFlex="30%"> Location </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="workPackageDetailService.getWorkPackage(element)" routerLink="/work-package-detail"
+        [ngStyle]="{'color': 'green', 'margin-left': '18px'}" fxFlex="30%"> Server</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef fxFlex="20%"> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="workPackageDetailService.getWorkPackage(element)" routerLink="/work-package-detail"
+        fxFlex="20%"> {{element.id}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+</table>
+
+
+<mat-toolbar *ngIf="!wpEmtpy" class="nts" [ngStyle]="{'background':'#ef3e58'}">
+
+  <i>- Work packages not yet sent -</i>
+
+</mat-toolbar>
+
+<div *ngIf="!wpEmtpy">
+
+  <table mat-table [dataSource]="a">
+
+
+    <!-- id -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef fxFlex="20%"> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex="20%"> - </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title" fxFlex="50%">
+      <mat-cell *matCellDef="let element" fxFlex="50%"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status" fxFlex="30%">
+      <mat-cell *matCellDef="let element" [ngStyle]="{'color': 'red', 'margin-left': '18px'}" fxFlex="30%"> Local</mat-cell>
+    </ng-container>
+
+
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+</div>

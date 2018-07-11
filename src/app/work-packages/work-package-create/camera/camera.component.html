@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <button mat-fab type="button" onclick="document.getElementById('fileToUpload').click()">
+      <i class="material-icons" id="imageUpload">add_circle</i>
+    </button>
+    <input #imageToShow id="fileToUpload" type="file" accept="image/*" style="display:none;" (change)="saveImg($event)">
+    <mat-list>
+      <mat-list-item onclick="document.getElementById('fileToUpload').click()">Image Upload</mat-list-item>
+    </mat-list>
+  </div>
+
+  <div *ngFor="let u of imgHandlingService.urls let i = index">
+    <div fxLayout="row" fxLayoutAlign="center">
+      <div>
+        <img [src]="u" width="300">
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center" (click)=deleteImg(i)>
+        <i class="material-icons">clear</i>
+      </div>
+    </div>
+  </div>
+ 
+</div>
