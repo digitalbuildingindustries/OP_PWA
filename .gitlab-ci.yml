@@ -1,8 +1,24 @@
+stages:
+  - build
+  - assemble-docker
+  
 image: node:alpine
 
 build:
+  stage: build
   script:
     - npm install
     - npm run build
   tags:
    - docker
+   artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+nginx-docker: 
+  stage: assemble-docker
+  script: 
+    - docker build -t oppwa .
+  tags:
+    - shell
