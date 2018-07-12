@@ -10,10 +10,10 @@ build:
     - npm run build
   tags:
   - docker
- # artifacts:
-  #  expire_in: 1 week
-  #  paths:
-   #   - dist
+  artifacts:
+    expire_in: 1 week
+    paths:
+     - dist
 
 nginx-docker: 
   stage: assemble-docker
