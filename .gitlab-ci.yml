@@ -14,7 +14,10 @@ build:
   #  expire_in: 1 week
   #  paths:
    #   - dist
+  artifacts:
+    untracked: true
 
+    
 nginx-docker: 
   stage: assemble-docker
   dependencies: 
