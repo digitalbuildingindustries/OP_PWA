@@ -2,9 +2,8 @@ stages:
   - build
   - assemble-docker
   
-image: node:alpine
-
 build:
+  image: node:alpine
   stage: build
   script:
     - npm install
@@ -21,4 +20,4 @@ nginx-docker:
   script: 
     - docker build -t oppwa .
   tags:
-  - shell
+    - shell
