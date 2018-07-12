@@ -11,7 +11,7 @@ build:
     - npm run build
   tags:
   - docker
-   artifacts:
+  artifacts:
     expire_in: 1 week
     paths:
       - dist
