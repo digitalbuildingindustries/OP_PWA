@@ -28,18 +28,18 @@ export class HandleDataService {
       //console.log("der imgwert ist:  "+imgHandlingService.urls[0]);
       //  console.log("Connectionstauts: " + this.checkConnectionService.internetConnectionStatus);
       //console.log("Connectionstatus: " + this.checkConnectionService.internetConnectionStatus)
-      
+
       if (this.checkConnectionService.internetConnectionStatus) {
         this.sendDataToServerService.prepareWorkpackagesToSend();
       }
     });
   }
 
-  handleData(id: number, t: string, d: string, u?: string[]) {
+  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string) {
 
     //generate Timestamp for unique id 
     let date = new Date();
-    this.workPackageModel = { 'id': 't'+date.getTime(), 'title': t, 'description': d, 'img': u, 'sent':false};
+    this.workPackageModel = { 'id': 't' + date.getTime(), 'title': t, 'description': d, 'img': u, 'sent': false, 'estimatedTime' :eT, 'remainingHours': rH};
 
     if (!this.checkConnectionService.internetConnectionStatus) {
       try {

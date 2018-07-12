@@ -87,7 +87,6 @@ export class DexieDbService {
   //Delete by Index 
   async clearStorageDataByIndex(key: any, db: any) {
     if (db.name == "WorkpackagesAll") {
-      console.log("in richtiger if")
       await db.workpackagesAll.where('id').equals(key).delete();
     }
     else {

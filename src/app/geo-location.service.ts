@@ -26,7 +26,7 @@ export class GeoLocationService {
   getGeoLocation = () => {
     if (navigator.geolocation) {
       return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition((position) => {
-        console.log("FINALLY RETURN VALUE      " + this.showPosition(position));
+      //  console.log("FINALLY RETURN VALUE      " + this.showPosition(position));
         resolve(this.showPosition(position));
       }, (error)=> {
         resolve("Geolocation is not supported or acces is denied");

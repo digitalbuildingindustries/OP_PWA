@@ -6,7 +6,8 @@ import {
   MatFormField, MatFormFieldModule, MatOptionModule,
   MatSelectModule, MatToolbar, MatToolbarModule, MatInputModule, MatListModule, MatButtonToggleModule,
   MatSnackBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatExpansionModule
 
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +22,7 @@ import 'hammerjs';
   exports: [CommonModule,
     MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatTableModule, MatTabsModule, MatInputModule,
     MatFormFieldModule, MatOptionModule, MatSelectModule, MatToolbarModule, MatButtonToggleModule,
-    BrowserAnimationsModule, MatSelectModule, MatSnackBarModule, CdkTableModule, MatProgressSpinnerModule,
+    BrowserAnimationsModule, MatSelectModule, MatSnackBarModule, CdkTableModule, MatProgressSpinnerModule, MatExpansionModule,
     MatListModule],
   declarations: [],
   providers: []

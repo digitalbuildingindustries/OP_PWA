@@ -75,14 +75,22 @@
       <div onclick="document.getElementById('fileToUpload').click()" class="imageUpload">Add image</div>
       <p mat-line> {{this.nOi}} </p>
     </mat-list-item>
-  </mat-list>
 
-  <mat-divider></mat-divider>
+  <mat-divider></mat-divider> 
+
+  <mat-list-item class="two">
+    <h4 mat-line>
+      <b>Estimated Time</b>
+    </h4>
+    <p mat-line> {{checkTimeValues(this.estimatedTime)}} </p>
+  </mat-list-item>
+  
+</mat-list>
 
 </div>
 
 
-<div *ngIf="spinner" fxLayout="column" fxLayoutAlign="center center">
+<div *ngIf="spinner" fxLayout="column" fxLayoutAlign="center center" [ngStyle]="{'padding-top': getSpinnerPosition()}">
   
     <mat-spinner></mat-spinner>
  

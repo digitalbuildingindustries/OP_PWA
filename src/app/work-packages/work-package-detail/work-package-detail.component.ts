@@ -17,12 +17,15 @@ export class WorkPackageDetailComponent implements OnInit {
   public descriptionArray: string[];
   public nOi: number;
   public img: any[];
+  public estimatedTime: string;
+  public remainingHours: string;
   public spinner: boolean;
   public fileDeleted: boolean;
   public wpObs$: Subscription;
   public geoWorks: boolean;
   public attachmentUrl: string;
   public spinnerPosition: number;
+  public estimatedTimeShow: number;
 
 
   constructor(public workPackageDetailService: WorkPackageDetailService, public sendDataToServerService: SendDataToServerService, public handleSnackbarService: HandleSnackbarService,
@@ -38,6 +41,9 @@ export class WorkPackageDetailComponent implements OnInit {
       this.nOi = e._embedded.attachments.count;
       this.title = e.subject;
       this.description = e.description.raw;
+      this.estimatedTime = e.estimatedTime;
+      this.remainingHours = e.remainingTime;
+      console.log(e);
       this.spinner = false;
       this.descriptionArray = this.parseMapsString(this.description);
       this.wpObs$ = this.workPackageDetailService.wp$.subscribe((f) => {
@@ -50,7 +56,9 @@ export class WorkPackageDetailComponent implements OnInit {
             'title': this.title,
             'description': this.description,
             'sent': true,
-            'numerOfImages': this.nOi
+            'numerOfImages': this.nOi,
+            'estimatedTime': this.estimatedTime,
+            'remainingHours': this.remainingHours
           }
           this.workPackageDetailService.saveFileInIndexedDb(newwp);
         }
@@ -66,11 +74,14 @@ export class WorkPackageDetailComponent implements OnInit {
           }
         });
       });
-
   }
 
   ngOnDestroy() {
     this.wpObs$.unsubscribe();
+  }
+
+  getSpinnerPosition() {
+    return (screen.height / 2) - 100 - 56 + 'px';
   }
 
   parseMapsString(s: string): string[] {
@@ -108,6 +119,16 @@ export class WorkPackageDetailComponent implements OnInit {
           });
         }
       }
+    }
+  }
+
+  checkTimeValues(value: any) {
+    if (value == null) {
+      return 0;
+    }
+    else {
+    
+   
     }
   }
 }

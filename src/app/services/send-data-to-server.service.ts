@@ -57,11 +57,11 @@ export class SendDataToServerService {
 
   //4. send Attachment
   async sendA(url: any, img: any, imageNumber?: number) {
-      this.attachmentURL = url;
-    
-      if(imageNumber){
-        this.attachmentCount = imageNumber;
-      }
+    this.attachmentURL = url;
+
+    if (imageNumber) {
+      this.attachmentCount = imageNumber;
+    }
     var formData = new FormData();
     if (img) {
       for (let element of img) {
@@ -90,8 +90,7 @@ export class SendDataToServerService {
           // this.priorityUrl = a._links.priority.href;
           this.attachmentURL = a._links.addAttachment.href,
           this.attachmentCount = 0;
-        console.log("NEUE ID: " + a.id)
-        console.log(a);
+        //  console.log("NEUE ID: " + a.id)
         let w = {
           'id': a.id,
           'title': this.workpackage.title,
@@ -139,7 +138,9 @@ export class SendDataToServerService {
         this.workpackage = element;
         let wpToSend = {
           'subject': this.workpackage.title,
-          'description': { 'raw': this.workpackage.description }
+          'description': { 'raw': this.workpackage.description },
+          'estimatedTime': this.workpackage.estimatedTime,
+          'remainingTime': this.workpackage.remainingHours
         };
         try {
 
@@ -156,7 +157,7 @@ export class SendDataToServerService {
               this.setSnackbarContent();
             }
             this.dexieService.clearStorageDataByIndex(this.workpackage.id, this.dexieService.db).then(() => {
-              console.log("6. Try to delete stuff" + wpToSend.subject);
+              //console.log("6. Try to delete stuff" + wpToSend.subject);
             })
           });
         }

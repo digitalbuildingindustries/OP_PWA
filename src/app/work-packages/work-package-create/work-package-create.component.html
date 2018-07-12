@@ -5,10 +5,11 @@
     <mat-form-field [ngStyle]="{'width' : '100%'}">
       <input name="title" matInput placeholder="Title" formControlName="title" required>
       <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-          <mat-error *ngIf="title.errors.required">
-            Title is <strong>required </strong>.
-          </mat-error>
-                    </div>
+        <mat-error *ngIf="title.errors.required">
+          Title is
+          <strong>required </strong>.
+        </mat-error>
+      </div>
     </mat-form-field>
 
 
@@ -19,6 +20,36 @@
         matAutosizeMinRows="3"></textarea>
     </mat-form-field>
 
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Advanced data
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input matInput placeholder="Estimated Time" formControlName="estimatedTime">
+            <div *ngIf="estimatedTime.invalid && (estimatedTime.dirty || estimatedTime.touched)" class="alert alert-danger">
+              <mat-error *ngIf="estimatedTime.errors.pattern">
+                No valid number.
+              </mat-error>
+            </div>
+          </mat-form-field>
+  
+        <mat-form-field>
+          <input matInput placeholder="Remaining Hours" formControlName="remainingHours">
+          <div *ngIf="remainingHours.invalid && (remainingHours.dirty || remainingHours.touched)" class="alert alert-danger">
+              <mat-error *ngIf="remainingHours.errors.pattern">
+                No valid number.
+              </mat-error>
+            </div>
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
   </form>
 
   <div fxLayout="row" fxLayoutAlign="center">
@@ -26,4 +57,4 @@
   </div>
   <button mat-raised-button [disabled]="!worckpackageCreateForm.valid" (click)="save()">Create Work package</button>
 
-  </div>
+</div>
