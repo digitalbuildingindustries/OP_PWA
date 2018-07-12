@@ -10,7 +10,7 @@ build:
     - npm install
     - npm run build
   tags:
-   - docker
+  - docker
    artifacts:
     expire_in: 1 week
     paths:
@@ -21,4 +21,4 @@ nginx-docker:
   script: 
     - docker build -t oppwa .
   tags:
-    - shell
+  - shell
