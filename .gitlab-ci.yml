@@ -17,6 +17,8 @@ build:
 
 nginx-docker: 
   stage: assemble-docker
+  dependencies: 
+    - build
   script: 
     - docker build -t oppwa .
   tags:
