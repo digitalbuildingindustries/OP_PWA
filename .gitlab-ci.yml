@@ -1,7 +1,7 @@
 stages:
   - build
   - assemble-docker
-  
+
 build:
   image: node:alpine
   stage: build
@@ -15,12 +15,13 @@ build:
     expire_in: 1 week
     paths:
      - dist
-    
-nginx-docker: 
+
+nginx-docker:
   stage: assemble-docker
-  dependencies: 
+  dependencies:
     - build
-  script: 
-    - docker build -t oppwa .
+  script:
+    - docker build -t titanic.w11k:5000/oppwa:latest
+    - docker push titanic.w11k:5000/oppwa
   tags:
     - shell
