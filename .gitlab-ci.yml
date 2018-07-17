@@ -21,7 +21,7 @@ nginx-docker:
   dependencies:
     - build
   script:
-    - docker build -t titanic.w11k:5000/oppwa:latest
+    - docker build -t titanic.w11k:5000/oppwa:latest .
     - docker push titanic.w11k:5000/oppwa
   tags:
     - shell
