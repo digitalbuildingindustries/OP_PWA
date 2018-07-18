@@ -30,31 +30,98 @@
         </mat-expansion-panel-header>
 
         <mat-form-field>
-            <input matInput placeholder="Estimated Time" formControlName="estimatedTime">
-            <div *ngIf="estimatedTime.invalid && (estimatedTime.dirty || estimatedTime.touched)" class="alert alert-danger">
-              <mat-error *ngIf="estimatedTime.errors.pattern">
-                No valid number.
-              </mat-error>
-            </div>
-          </mat-form-field>
-  
+          <input matInput placeholder="Estimated Time" formControlName="estimatedTime">
+          <div *ngIf="estimatedTime.invalid && (estimatedTime.dirty || estimatedTime.touched)" class="alert alert-danger">
+            <mat-error *ngIf="estimatedTime.errors.pattern">
+              No valid number.
+            </mat-error>
+          </div>
+        </mat-form-field>
+
         <mat-form-field>
           <input matInput placeholder="Remaining Hours" formControlName="remainingHours">
           <div *ngIf="remainingHours.invalid && (remainingHours.dirty || remainingHours.touched)" class="alert alert-danger">
-              <mat-error *ngIf="remainingHours.errors.pattern">
-                No valid number.
-              </mat-error>
-            </div>
+            <mat-error *ngIf="remainingHours.errors.pattern">
+              No valid number.
+            </mat-error>
+          </div>
         </mat-form-field>
+
+
+
+        <mat-form-field>
+          <div (click)="startDate.open()">
+            <input matInput [matDatepicker]="startDate" placeholder="Start date" formControlName="startDate" [ngStyle]="!dateValid && {'color': '#f44336'}">
+          </div>
+          <div *ngIf="!dateValid" class="alert alert-danger">
+            <mat-error *ngIf="!dateValid">
+              The
+              <b>start date</b> must be before the
+              <b> due date</b>.
+            </mat-error>
+          </div>
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <div (click)="dueDate.open()">
+            <input matInput [matDatepicker]="dueDate" placeholder="Due date" formControlName="dueDate" [ngStyle]="!dateValid && {'color': '#f44336'}"
+              class="errorDate">
+          </div>
+          <div *ngIf="!dateValid" class="alert alert-danger">
+            <mat-error *ngIf="!dateValid">
+              The
+              <b>start date</b> must be before the
+              <b> due date</b>.
+            </mat-error>
+          </div>
+          <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+          <mat-datepicker #dueDate disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+
+
+        <!--         <mat-form-field>
+          <input matInput [matDatepicker]="startDate" placeholder="Choose the start date">
+          <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="alert alert-danger">
+            <mat-error *ngIf="startDate.errors.pattern">
+              No valid Date.(mm/dd/jjjj)
+            </mat-error>
+          </div>
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="dueDate" placeholder="Choose the due date">
+          <div *ngIf="dueDate.invalid && (dueDate.dirty || dueDate.touched)" class="alert alert-danger">
+            <mat-error *ngIf="dueDate.errors.pattern">
+              No valid Date.(mm/dd/jjjj)
+            </mat-error>
+          </div>
+          <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+          <mat-datepicker #dueDate></mat-datepicker>
+        </mat-form-field> -->
+
+<!-- [textMask]="{mask: mask, guide:false}"  (input)="parsePercentage($event)"-->
+        <mat-form-field>
+          <input matInput placeholder="Progress %" formControlName="percentageDone">
+          <div *ngIf="percentageDone.invalid && (percentageDone.dirty || percentageDone.touched)" class="alert alert-danger">
+            <mat-error *ngIf="percentageDone.errors.pattern">
+              No Valid Value. The number must be between 1 and 100.
+            </mat-error>
+          </div>
+        </mat-form-field>
+
       </mat-expansion-panel>
     </mat-accordion>
-
 
   </form>
 
   <div fxLayout="row" fxLayoutAlign="center">
     <app-camera></app-camera>
   </div>
-  <button mat-raised-button [disabled]="!worckpackageCreateForm.valid" (click)="save()">Create Work package</button>
+  <button mat-raised-button [disabled]="!formValid" (click)="save()">Create Work package</button>
 
 </div>

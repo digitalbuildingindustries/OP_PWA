@@ -5,3 +5,28 @@
  .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
     background: white;
  }  
+/* 
+.errorDate {
+  color:  #f44336
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label{
+    color: #f44336;
+} 
+
+
+.mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline .mat-input-element[disabled] {
+    background-position: 0 !important;
+    background-color: #f44336 !important;
+} */
+
+
+/* When the input is not focused */
+.mat-focused .placeholder {
+    color: #f44336;
+  }
+  
+  /* When the input is focused */
+  mat-input-container.md-input-focused label {
+    color: #f44336;
+  }

@@ -7,4 +7,7 @@ export class WorkPackageModel{
     img?: string[];
     sent: boolean;
     numerOfImages?: number;
+    percentageDone?: any;
+    startDate?: any;
+    dueDate?: any;
 }

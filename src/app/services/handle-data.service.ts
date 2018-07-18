@@ -35,11 +35,11 @@ export class HandleDataService {
     });
   }
 
-  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string) {
+  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string, percentageDone?: any, startDate?: any, dueDate?: any) {
 
     //generate Timestamp for unique id 
     let date = new Date();
-    this.workPackageModel = { 'id': 't' + date.getTime(), 'title': t, 'description': d, 'img': u, 'sent': false, 'estimatedTime' :eT, 'remainingHours': rH};
+    this.workPackageModel = { 'id': 't' + date.getTime(), 'title': t, 'description': d, 'img': u, 'sent': false, 'estimatedTime' :eT, 'remainingHours': rH, 'percentageDone': percentageDone, 'startDate': startDate, 'dueDate': dueDate};
 
     if (!this.checkConnectionService.internetConnectionStatus) {
       try {

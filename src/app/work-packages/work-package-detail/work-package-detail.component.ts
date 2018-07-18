@@ -26,7 +26,10 @@ export class WorkPackageDetailComponent implements OnInit {
   public attachmentUrl: string;
   public spinnerPosition: number;
   public estimatedTimeShow: number;
-
+  public id: any;
+  public percentageDone: any;
+  public startDate: any;
+  public dueDate: any;
 
   constructor(public workPackageDetailService: WorkPackageDetailService, public sendDataToServerService: SendDataToServerService, public handleSnackbarService: HandleSnackbarService,
     public checkConnectionService: CheckConnectionService) { }
@@ -43,6 +46,15 @@ export class WorkPackageDetailComponent implements OnInit {
       this.description = e.description.raw;
       this.estimatedTime = e.estimatedTime;
       this.remainingHours = e.remainingTime;
+      this.id = e.id;
+      this.percentageDone = e.percentageDone;
+      this.dueDate = e.dueDate;
+      this.startDate = e.startDate;
+      if(this.dueDate == null || this.dueDate == undefined)
+      this.dueDate = "-";
+      if(this.startDate == null || this.startDate == undefined)
+      this.startDate = "-";
+      
       console.log(e);
       this.spinner = false;
       this.descriptionArray = this.parseMapsString(this.description);
@@ -58,7 +70,10 @@ export class WorkPackageDetailComponent implements OnInit {
             'sent': true,
             'numerOfImages': this.nOi,
             'estimatedTime': this.estimatedTime,
-            'remainingHours': this.remainingHours
+            'remainingHours': this.remainingHours,
+            'percentageDone': this.percentageDone,
+            'startDate': this.startDate,
+            'dueDate': this.dueDate
           }
           this.workPackageDetailService.saveFileInIndexedDb(newwp);
         }
@@ -122,13 +137,5 @@ export class WorkPackageDetailComponent implements OnInit {
     }
   }
 
-  checkTimeValues(value: any) {
-    if (value == null) {
-      return 0;
-    }
-    else {
-    
-   
-    }
-  }
+
 }

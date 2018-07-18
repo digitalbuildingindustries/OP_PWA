@@ -1,6 +1,6 @@
 stages:
   - build
-  - assemble-docker
+  - assemble-docker 
   
 build:
   image: node:alpine

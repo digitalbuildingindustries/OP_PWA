@@ -27,7 +27,7 @@ export class WorkPackageDetailService {
    // this.URL = '/api/v3/projects/testprojekt/work_packages';
     this.URL = '/api/v3/projects/testprojekt/work_packages';
    
-    this.APIKEY = 'e6b6b786880e4f38296bd8fc1e9323bf7b257fa637680b967e5fa443b3213b80';
+    this.APIKEY = 'a9d666f4557626f82eae71a2e286a1b19890a55a9aeff50c61b88c99e0afd23c';
     this.HTTPOPTIONSWORKPACKAGE = {
       headers: new HttpHeaders({
         'Authorization': 'Basic ' + btoa('apikey:' + this.APIKEY)
