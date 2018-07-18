@@ -28,6 +28,16 @@
   <mat-divider></mat-divider>
   <mat-list>
     <!--  <mat-card>-->
+    <mat-list-item class="two">
+      <h4 mat-line>
+        <b>ID</b>
+      </h4>
+      <p mat-line> {{this.id}}</p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+
     <mat-list-item class="one">
       <h4 mat-line>
         <b>Title</b>
@@ -76,24 +86,63 @@
       <p mat-line> {{this.nOi}} </p>
     </mat-list-item>
 
-  <mat-divider></mat-divider> 
+    <mat-divider></mat-divider>
 
-  <mat-list-item class="two">
-    <h4 mat-line>
-      <b>Estimated Time</b>
-    </h4>
-    <p mat-line> {{checkTimeValues(this.estimatedTime)}} </p>
-  </mat-list-item>
-  
-</mat-list>
+    <mat-list-item class="two">
+      <h4 mat-line>
+        <b>Estimated Time</b>
+      </h4>
+      <p mat-line> {{this.estimatedTime | time | number:'1.0-2'}} Hours</p>
+    </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+    <mat-list-item class="one">
+      <h4 mat-line>
+        <b>Remaining Time</b>
+      </h4>
+      <p mat-line> {{this.remainingHours | time | number:'1.0-2'}} Hours</p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <mat-list-item class="two">
+      <h4 mat-line>
+        <b>Progress</b>
+      </h4>
+      <p mat-line> {{this.percentageDone}} %</p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <mat-list-item class="one">
+      <h4 mat-line>
+          <b>Start date</b>
+      </h4>
+      <p mat-line> {{this.startDate}}</p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <mat-list-item class="two">
+      <h4 mat-line>
+        <b>Due date</b>
+      </h4>
+      <p mat-line> {{this.dueDate}}</p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+    
+  </mat-list>
 
 </div>
 
 
 <div *ngIf="spinner" fxLayout="column" fxLayoutAlign="center center" [ngStyle]="{'padding-top': getSpinnerPosition()}">
-  
-    <mat-spinner></mat-spinner>
- 
-<div *ngIf="fileDeleted">
-  <h1> Work package doesn't exist anymore. </h1>
+
+  <mat-spinner></mat-spinner>
 </div>
+
+  <div *ngIf="fileDeleted">
+    <h1> Work package doesn't exist anymore. </h1>
+  </div>  

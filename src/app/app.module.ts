@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { UpdateAppService } from './update-app.service';
 
 //Extern Componetns
+import { TextMaskModule } from 'angular2-text-mask';
 
 //Angular Components
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,6 +43,8 @@ import { LongPressDirective } from './directives/long-press.directive';
 import { UpdateSnackbarComponent } from './update-snackbar/update-snackbar.component';
 import { SendDataSnackbarComponent } from './send-data-snackbar/send-data-snackbar.component';
 import { WorkPackageDetailComponent } from './work-packages/work-package-detail/work-package-detail.component';
+import { TimePipe } from './time.pipe';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,8 @@ import { WorkPackageDetailComponent } from './work-packages/work-package-detail/
     CameraComponent,
     SendDataSnackbarComponent,
     WorkPackageDetailComponent,
+    TimePipe,
+    DatePickerComponent,
     
   ],
   exports: [
@@ -68,6 +73,8 @@ import { WorkPackageDetailComponent } from './work-packages/work-package-detail/
   imports: [
     FlexLayoutModule,
     AngularMaterialModule,
+
+    TextMaskModule,
 
     BrowserModule,
     ReactiveFormsModule,

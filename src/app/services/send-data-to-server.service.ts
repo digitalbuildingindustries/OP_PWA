@@ -33,7 +33,7 @@ export class SendDataToServerService {
     this.workpackageCount = 0;
     // this.URL = '/api/v3/projects/testprojekt/work_packages';
     this.URL = '/api/v3/projects/testprojekt/work_packages';
-    this.APIKEY = 'e6b6b786880e4f38296bd8fc1e9323bf7b257fa637680b967e5fa443b3213b80';
+    this.APIKEY = 'a9d666f4557626f82eae71a2e286a1b19890a55a9aeff50c61b88c99e0afd23c';
 
 
     //API DOCKER INSZANCE
@@ -84,6 +84,7 @@ export class SendDataToServerService {
       /*       var formDat = new FormData();
             formDat.append('subject', 'file');
             return this.http.post<any>(this.URL, formDat, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => { */
+      console.log(wpToSend);
       return this.http.post<WorkPackageModel>(this.URL, wpToSend, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
         console.log(data),
           a = data,
@@ -140,7 +141,13 @@ export class SendDataToServerService {
           'subject': this.workpackage.title,
           'description': { 'raw': this.workpackage.description },
           'estimatedTime': this.workpackage.estimatedTime,
-          'remainingTime': this.workpackage.remainingHours
+          'remainingTime': this.workpackage.remainingHours,
+          'percentageDone': this.workpackage.percentageDone,
+          //'percentageDone': '100',
+          //  'startDate': '2019-02-11',
+          // 'dueDate': '2019-02-11',
+          'startDate': this.workpackage.startDate,
+          'dueDate': this.workpackage.dueDate
         };
         try {
 

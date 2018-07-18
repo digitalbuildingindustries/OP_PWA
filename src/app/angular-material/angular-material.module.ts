@@ -7,9 +7,12 @@ import {
   MatSelectModule, MatToolbar, MatToolbarModule, MatInputModule, MatListModule, MatButtonToggleModule,
   MatSnackBarModule,
   MatProgressSpinnerModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 
 } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
@@ -23,7 +26,7 @@ import 'hammerjs';
     MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatTableModule, MatTabsModule, MatInputModule,
     MatFormFieldModule, MatOptionModule, MatSelectModule, MatToolbarModule, MatButtonToggleModule,
     BrowserAnimationsModule, MatSelectModule, MatSnackBarModule, CdkTableModule, MatProgressSpinnerModule, MatExpansionModule,
-    MatListModule],
+    MatListModule, MatDatepickerModule, MatNativeDateModule, MatMomentDateModule],
   declarations: [],
   providers: []
 })
