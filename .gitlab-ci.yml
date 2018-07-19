@@ -21,7 +21,7 @@ nginx-docker:
   dependencies:
     - build
   script:
-    - echo '{ "userns-remap": "cstrauss",  "insecure-registries":["titanic.w11k:5000"] }' > /etc/docker/daemon.json
+#    - 'echo { "userns-remap": "cstrauss",  "insecure-registries":["titanic.w11k:5000"] } > /etc/docker/daemon.json'
     - docker build -t titanic.w11k:5000/oppwa:latest .
     - docker push titanic.w11k:5000/oppwa
   tags:
