@@ -1,9 +1,9 @@
-import { WorkPackageDetailService } from './../work-package-detail/work-package-detail.service';
-import { HandleDataService } from './../../services/handle-data.service';
-import { SendDataToServerService } from './../../services/send-data-to-server.service';
-import { WorkPackageModel } from './../work-package.model';
-import { DexieDbService, } from './../../dexieDb/dexie-db.service';
-import { WORKPACKAGESLIST } from './../work-packages-list.model';
+import { WorkPackageDetailService } from '../work-package-detail/work-package-detail.service';
+import { HandleDataService } from '../../services/handle-data.service';
+import { SendDataToServerService } from '../../services/send-data-to-server.service';
+import { WorkPackageModel } from '../work-package.model';
+import { DexieDbService, } from '../../dexieDb/dexie-db.service';
+import { WORKPACKAGESLIST } from '../work-packages-list.model';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/catch';

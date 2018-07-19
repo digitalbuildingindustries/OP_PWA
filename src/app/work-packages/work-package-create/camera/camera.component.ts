@@ -1,4 +1,4 @@
-import { ImgHandlingService } from './../img-handling.service';
+import { ImgHandlingService } from '../img-handling.service';
 import { Component, OnInit, SimpleChanges, } from '@angular/core';
 
 @Component({

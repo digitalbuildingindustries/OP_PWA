@@ -1,7 +1,7 @@
 import { async } from '@angular/core/testing';
-import { DexieDbService } from './../../dexieDb/dexie-db.service';
+import { DexieDbService } from '../../dexieDb/dexie-db.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { WorkPackageModel } from './../work-package.model';
+import { WorkPackageModel } from '../work-package.model';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 

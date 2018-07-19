@@ -1,9 +1,9 @@
-import { ImgHandlingService } from './../work-packages/work-package-create/img-handling.service';
+import { ImgHandlingService } from '../work-packages/work-package-create/img-handling.service';
 import { SendDataToServerService } from './send-data-to-server.service';
-import { HandleSnackbarService } from './../send-data-snackbar/handle-snackbar.service';
-import { WorkPackageModel } from './../work-packages/work-package.model';
+import { HandleSnackbarService } from '../send-data-snackbar/handle-snackbar.service';
+import { WorkPackageModel } from '../work-packages/work-package.model';
 import { CheckConnectionService } from './check-connection.service';
-import { DexieDbService } from './../dexieDb/dexie-db.service';
+import { DexieDbService } from '../dexieDb/dexie-db.service';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';

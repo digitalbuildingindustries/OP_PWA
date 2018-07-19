@@ -13,8 +13,6 @@
     </mat-form-field>
 
 
-
-
     <mat-form-field [ngStyle]="{'width' : '100%'}">
       <textarea name="description" matInput matTextareaAutosize minRows="6" placeholder="Description" formControlName="description"
         matAutosizeMinRows="3"></textarea>
@@ -30,18 +28,18 @@
         </mat-expansion-panel-header>
 
         <mat-form-field>
-          <input matInput placeholder="Estimated Time" formControlName="estimatedTime">
-          <div *ngIf="estimatedTime.invalid && (estimatedTime.dirty || estimatedTime.touched)" class="alert alert-danger">
-            <mat-error *ngIf="estimatedTime.errors.pattern">
+          <input matInput placeholder="Estimated Time (in hours)" formControlName="estimatedTime" (input)="validParseFormInputService.parseTime($event, this.worckpackageCreateForm, this.ESTIMATEDTIME)" #estimatedTime id="estimatedTime">
+          <div *ngIf="!validParseFormInputService.estimatedTimeValid" class="alert alert-danger">
+            <mat-error *ngIf="!validParseFormInputService.estimatedTimeValid">
               No valid number.
             </mat-error>
           </div>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Remaining Hours" formControlName="remainingHours">
-          <div *ngIf="remainingHours.invalid && (remainingHours.dirty || remainingHours.touched)" class="alert alert-danger">
-            <mat-error *ngIf="remainingHours.errors.pattern">
+          <input matInput placeholder="Remaining Hours" formControlName="remainingHours" (input)="validParseFormInputService.parseTime($event, this.worckpackageCreateForm, this.REMAININGHOURS)" #remainingHours id="remainingHours">
+          <div *ngIf="!validParseFormInputService.remainingTimeValid" class="alert alert-danger">
+            <mat-error *ngIf="!validParseFormInputService.remainingTimeValid">
               No valid number.
             </mat-error>
           </div>
@@ -51,10 +49,10 @@
 
         <mat-form-field>
           <div (click)="startDate.open()">
-            <input matInput [matDatepicker]="startDate" placeholder="Start date" formControlName="startDate" [ngStyle]="!dateValid && {'color': '#f44336'}">
+            <input matInput [matDatepicker]="startDate" placeholder="Start date" formControlName="startDate" [ngStyle]="!validParseFormInputService.dateValid && {'color': '#f44336'}">
           </div>
-          <div *ngIf="!dateValid" class="alert alert-danger">
-            <mat-error *ngIf="!dateValid">
+          <div *ngIf="!validParseFormInputService.dateValid" class="alert alert-danger">
+            <mat-error *ngIf="!validParseFormInputService.dateValid">
               The
               <b>start date</b> must be before the
               <b> due date</b>.
@@ -66,11 +64,11 @@
 
         <mat-form-field>
           <div (click)="dueDate.open()">
-            <input matInput [matDatepicker]="dueDate" placeholder="Due date" formControlName="dueDate" [ngStyle]="!dateValid && {'color': '#f44336'}"
+            <input matInput [matDatepicker]="dueDate" placeholder="Due date" formControlName="dueDate" [ngStyle]="!validParseFormInputService.dateValid && {'color': '#f44336'}"
               class="errorDate">
           </div>
-          <div *ngIf="!dateValid" class="alert alert-danger">
-            <mat-error *ngIf="!dateValid">
+          <div *ngIf="!validParseFormInputService.dateValid" class="alert alert-danger">
+            <mat-error *ngIf="!validParseFormInputService.dateValid">
               The
               <b>start date</b> must be before the
               <b> due date</b>.
@@ -106,7 +104,7 @@
 
 <!-- [textMask]="{mask: mask, guide:false}"  (input)="parsePercentage($event)"-->
         <mat-form-field>
-          <input matInput placeholder="Progress %" formControlName="percentageDone">
+          <input matInput placeholder="Progress (1 - 100%)" formControlName="percentageDone" (input)="validParseFormInputService.parsePercentage($event, this.worckpackageCreateForm, this.PERCENTAGEDONE)" #percentageDone id="percentageDone">
           <div *ngIf="percentageDone.invalid && (percentageDone.dirty || percentageDone.touched)" class="alert alert-danger">
             <mat-error *ngIf="percentageDone.errors.pattern">
               No Valid Value. The number must be between 1 and 100.

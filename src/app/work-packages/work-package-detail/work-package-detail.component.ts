@@ -1,6 +1,6 @@
-import { CheckConnectionService } from './../../services/check-connection.service';
-import { HandleSnackbarService } from './../../send-data-snackbar/handle-snackbar.service';
-import { SendDataToServerService } from './../../services/send-data-to-server.service';
+import { CheckConnectionService } from '../../services/check-connection.service';
+import { HandleSnackbarService } from '../../send-data-snackbar/handle-snackbar.service';
+import { SendDataToServerService } from '../../services/send-data-to-server.service';
 import { Subscription } from 'rxjs';
 import { WorkPackageDetailService } from './work-package-detail.service';
 import { Component, OnInit } from '@angular/core';

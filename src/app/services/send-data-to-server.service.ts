@@ -1,7 +1,7 @@
-import { ImgHandlingService } from './../work-packages/work-package-create/img-handling.service';
+import { ImgHandlingService } from '../work-packages/work-package-create/img-handling.service';
 import { Dexie } from 'dexie';
-import { WorkPackageModel } from './../work-packages/work-package.model';
-import { HandleSnackbarService } from './../send-data-snackbar/handle-snackbar.service';
+import { WorkPackageModel } from '../work-packages/work-package.model';
+import { HandleSnackbarService } from '../send-data-snackbar/handle-snackbar.service';
 import { DexieDbService } from '../dexieDb/dexie-db.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

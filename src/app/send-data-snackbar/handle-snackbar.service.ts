@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { WorkPackageModel } from './../work-packages/work-package.model';
+import { WorkPackageModel } from '../work-packages/work-package.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Subscription } from 'rxjs';
