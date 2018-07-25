@@ -1,9 +1,11 @@
 <div fxLayout="column" fxLayoutGap="9px">
-  
+
   <app-menu (debugReloads)="showReloadPageButton($event)" class="ttt"></app-menu>
   <div fxFlex="100">
     <!--     <a routerLink="/cache-demo" routerLinkActive="active">Cache Testing</a> -->
+
     <router-outlet></router-outlet>
+
     <mat-button-toggle *ngIf="debugButton" (click)="reloadPage()"> RELOAD PAGE </mat-button-toggle>
   </div>
 
@@ -11,6 +13,6 @@
   <!--  <app-update-snackbar></app-update-snackbar> -->
 
   <app-send-data-snackbar *ngIf="this.handleSnackbarService.show" [title]="handleSnackbarService.title" [number]="handleSnackbarService.number"
-    [status]="handleSnackbarService.status">
+    [status]="handleSnackbarService.status" [duration]="handleSnackbarService.duration">
   </app-send-data-snackbar>
 </div>

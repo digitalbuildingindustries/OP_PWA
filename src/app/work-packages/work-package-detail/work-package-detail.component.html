@@ -1,5 +1,12 @@
-<div *ngIf="!spinner && !fileDeleted" fxLayout="column">
-  <!--
+<div *ngIf="fileDeleted">
+    <h1 class="mat-display-1">Work package doesn't exist anymore. </h1>
+</div>
+<mat-card *ngIf="!spinner && !fileDeleted">
+  <mat-card-title>
+    <h2 class="mat-h2" fxLayoutAlign="center">Work package details</h2>
+  </mat-card-title>
+  <div fxLayout="column">
+    <!--
     <div>
       <h3>Title:</h3>
       <p>{{this.title}}</p>
@@ -25,124 +32,124 @@
     <h1> Work package doesn't exist anymore. </h1>
   </div>
 -->
-  <mat-divider></mat-divider>
-  <mat-list>
-    <!--  <mat-card>-->
-    <mat-list-item class="two">
-      <h4 mat-line>
-        <b>ID</b>
-      </h4>
-      <p mat-line> {{this.id}}</p>
-    </mat-list-item>
-
     <mat-divider></mat-divider>
-
-
-    <mat-list-item class="one">
-      <h4 mat-line>
-        <b>Title</b>
-      </h4>
-      <p mat-line> {{this.title}} </p>
-    </mat-list-item>
-    <!--  </mat-card> -->
-    <mat-divider></mat-divider>
-    <div *ngIf="geoWorks">
-      <!--   <mat-card [ngStyle]="{'margin-top':'10px'}">-->
+    <mat-list>
+      <!--  <mat-card>-->
       <mat-list-item class="two">
         <h4 mat-line>
-          <b>Description</b>
+          <b>ID</b>
         </h4>
-        <p mat-line> {{this.descriptionArray[0]}} </p>
-        <p mat-line>
-          <a href={{this.descriptionArray[1]}} target="_blank" fxLayoutAlign="start center">
-            <img src="assets/maps.png" width="25" height="25">
-            <span [ngStyle]="{'height':'100%'}"> Google Maps coordinates</span>
-          </a>
-        </p>
+        <p mat-line> {{this.id}}</p>
       </mat-list-item>
-      <!-- </mat-card>-->
-    </div>
 
-    <div *ngIf="!geoWorks">
-      <mat-list-item>
+      <mat-divider></mat-divider>
+
+
+      <mat-list-item class="one">
         <h4 mat-line>
-          <b>Description</b>
+          <b>Title</b>
         </h4>
-        <p mat-line> {{this.descriptionArray[0]}} </p>
-        <p mat-line>
-          <u>No geo coordiantes availiable.</u>
-        </p>
+        <p mat-line> {{this.title}} </p>
       </mat-list-item>
-    </div>
-    <mat-divider></mat-divider>
+      <!--  </mat-card> -->
+      <mat-divider></mat-divider>
+      <div *ngIf="geoWorks">
+        <!--   <mat-card [ngStyle]="{'margin-top':'10px'}">-->
+        <mat-list-item class="two">
+          <h4 mat-line>
+            <b>Description</b>
+          </h4>
+          <p mat-line> {{this.descriptionArray[0]}} </p>
+          <p mat-line>
+            <a href={{this.descriptionArray[1]}} target="_blank" fxLayoutAlign="start center">
+              <img src="assets/maps.png" width="25" height="25">
+              <span [ngStyle]="{'height':'100%'}"> Google Maps coordinates</span>
+            </a>
 
-    <mat-list-item class="one">
-      <h4 mat-line>
-        <b>Number of Images</b>
-      </h4>
-      <i class="material-icons" id="imageUpload" onclick="document.getElementById('fileToUpload').click()">add_circle</i>
-      <input #imageToShow id="fileToUpload" type="file" accept="image/*" style="display:none;" (change)="sendAttachmentToServer($event)">
-      <div onclick="document.getElementById('fileToUpload').click()" class="imageUpload">Add image</div>
-      <p mat-line> {{this.nOi}} </p>
-    </mat-list-item>
+          </p>
+        </mat-list-item>
+        <!-- </mat-card>-->
+      </div>
 
-    <mat-divider></mat-divider>
+      <div *ngIf="!geoWorks">
+        <mat-list-item>
+          <h4 mat-line>
+            <b>Description</b>
+          </h4>
+          <p mat-line> {{this.descriptionArray[0]}} </p>
+          <p mat-line>
+            <u>No geo coordiantes availiable.</u>
+          </p>
+        </mat-list-item>
+      </div>
+      <mat-divider></mat-divider>
 
-    <mat-list-item class="two">
-      <h4 mat-line>
-        <b>Estimated Time</b>
-      </h4>
-      <p mat-line> {{this.estimatedTime | time | number:'1.0-2'}} Hours</p>
-    </mat-list-item>
+      <mat-list-item class="one">
+        <h4 mat-line>
+          <b>Number of Images</b>
+        </h4>
+        <i class="material-icons" id="imageUpload" onclick="document.getElementById('fileToUpload').click()">add_circle</i>
+        <input #imageToShow id="fileToUpload" type="file" accept="image/*" style="display:none;" (change)="sendAttachmentToServer($event)">
+        <div onclick="document.getElementById('fileToUpload').click()" class="imageUpload">Add image</div>
+        <p mat-line> {{this.nOi}} </p>
+      </mat-list-item>
 
-  <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-    <mat-list-item class="one">
-      <h4 mat-line>
-        <b>Remaining Time</b>
-      </h4>
-      <p mat-line> {{this.remainingHours | time | number:'1.0-2'}} Hours</p>
-    </mat-list-item>
+      <mat-list-item class="two">
+        <h4 mat-line>
+          <b>Estimated Time</b>
+        </h4>
+        <p mat-line> {{this.estimatedTime | time | number:'1.0-2'}} Hours</p>
+      </mat-list-item>
 
-    <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-    <mat-list-item class="two">
-      <h4 mat-line>
-        <b>Progress</b>
-      </h4>
-      <p mat-line> {{this.percentageDone}} %</p>
-    </mat-list-item>
+      <mat-list-item class="one">
+        <h4 mat-line>
+          <b>Remaining Time</b>
+        </h4>
+        <p mat-line> {{this.remainingHours | time | number:'1.0-2'}} Hours</p>
+      </mat-list-item>
 
-    <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-    <mat-list-item class="one">
-      <h4 mat-line>
+      <mat-list-item class="two">
+        <h4 mat-line>
+          <b>Progress</b>
+        </h4>
+        <p mat-line> {{this.percentageDone}} %</p>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item class="one">
+        <h4 mat-line>
           <b>Start date</b>
-      </h4>
-      <p mat-line> {{this.startDate}}</p>
-    </mat-list-item>
+        </h4>
+        <p mat-line> {{this.startDate}}</p>
+      </mat-list-item>
 
-    <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-    <mat-list-item class="two">
-      <h4 mat-line>
-        <b>Due date</b>
-      </h4>
-      <p mat-line> {{this.dueDate}}</p>
-    </mat-list-item>
+      <mat-list-item class="two">
+        <h4 mat-line>
+          <b>Due date</b>
+        </h4>
+        <p mat-line> {{this.dueDate}}</p>
+      </mat-list-item>
 
-    <mat-divider></mat-divider>
-    
-  </mat-list>
+      <mat-divider></mat-divider>
 
-</div>
+    </mat-list>
+
+  </div>
 
 
+
+
+</mat-card>
 <div *ngIf="spinner" fxLayout="column" fxLayoutAlign="center center" [ngStyle]="{'padding-top': getSpinnerPosition()}">
 
   <mat-spinner></mat-spinner>
 </div>
-
-  <div *ngIf="fileDeleted">
-    <h1> Work package doesn't exist anymore. </h1>
-  </div>  

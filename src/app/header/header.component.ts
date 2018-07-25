@@ -1,3 +1,4 @@
+import { HandleSnackbarService } from './../send-data-snackbar/handle-snackbar.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,18 +13,19 @@ export class HeaderComponent implements OnInit {
 
   header: string;
   rounter: Router;
- 
+
   arrowBack: boolean;
   create: boolean;
   lastRoute: string;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public handleSnackbarService: HandleSnackbarService) {
     this.arrowBack = false;
   }
 
   ngOnInit() {
     this.header = '';
     let tempRoute;
+
 
     this.router.events.subscribe((event) => {
       //save last route
@@ -57,16 +59,22 @@ export class HeaderComponent implements OnInit {
           tempRoute = '/work-packages';
           this.debugReload.emit(true);
           break;
-          case '/work-package-detail':
+        case '/work-package-detail':
           this.header = 'Work package details ';
           this.arrowBack = true;
           tempRoute = '/work-packages';
           this.debugReload.emit(true);
           break;
         default:
-          //this.arrowBack = false;
+        //this.arrowBack = false;
       };
-       });
+      this.header = 'OpenProject - PWA';
+    });
+  }
+
+  hideSnackbar() {
+    //   this.handleSnackbarService.show = false;
+    // console.log("Hides")
   }
 
 }

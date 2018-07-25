@@ -1,7 +1,7 @@
 import { CheckConnectionService } from '../../services/check-connection.service';
 import { HandleSnackbarService } from '../../send-data-snackbar/handle-snackbar.service';
 import { SendDataToServerService } from '../../services/send-data-to-server.service';
-import { Subscription } from 'rxjs';
+import { Subscription, timer, Observable } from 'rxjs';
 import { WorkPackageDetailService } from './work-package-detail.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -50,11 +50,11 @@ export class WorkPackageDetailComponent implements OnInit {
       this.percentageDone = e.percentageDone;
       this.dueDate = e.dueDate;
       this.startDate = e.startDate;
-      if(this.dueDate == null || this.dueDate == undefined)
-      this.dueDate = "-";
-      if(this.startDate == null || this.startDate == undefined)
-      this.startDate = "-";
-      
+      if (this.dueDate == null || this.dueDate == undefined)
+        this.dueDate = "-";
+      if (this.startDate == null || this.startDate == undefined)
+        this.startDate = "-";
+
       console.log(e);
       this.spinner = false;
       this.descriptionArray = this.parseMapsString(this.description);
@@ -89,6 +89,17 @@ export class WorkPackageDetailComponent implements OnInit {
           }
         });
       });
+    let timer = Observable.timer(6000, 1000);
+    let s: Subscription = timer.subscribe(() => {
+      if (this.spinner) {
+        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, null, 9000);
+        s.unsubscribe();
+      }
+    });
+    /*   if (!this.checkConnectionService.internetConnectionStatus) {
+        console.log("OFFLINE")
+        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, null, 10000);
+      } */
   }
 
   ngOnDestroy() {

@@ -12,9 +12,13 @@ font-size:13px;
   }
 
 .one{
-  background-color: #f5f5f5
+  background-color: #f5f5f5;
 }
 
 .two{
   background-color: #fafafa;
+}
+
+::ng-deep .mat-card{
+  padding: 0px 0px;
 }

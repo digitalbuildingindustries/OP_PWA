@@ -1,10 +1,14 @@
+/* .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, .2), 0 1px 0px 0px rgba(0, 0, 0, .14), 0 1px 0px -0px rgba(0, 0, 0, .12);
+} */
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
-    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, .2), 0 1px 0px 0px rgba(0, 0, 0, .14), 0 1px 0px -0px rgba(0, 0, 0, .12);
- }
- .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
-    background: white;
- }  
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, .2), 0 1px 0px 0px rgba(0, 0, 0, 0), 0 1px 0px -0px rgba(0, 0, 0, 0);
+}
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+  background: white;
+}
+
 /* 
 .errorDate {
   color:  #f44336
@@ -20,13 +24,29 @@
     background-color: #f44336 !important;
 } */
 
-
 /* When the input is not focused */
+
 .mat-focused .placeholder {
-    color: #f44336;
-  }
-  
-  /* When the input is focused */
-  mat-input-container.md-input-focused label {
-    color: #f44336;
-  }
+  color: #f44336;
+}
+
+/* When the input is focused */
+
+mat-input-container.md-input-focused label {
+  color: #f44336;
+}
+/*
+::ng-deep #cdk-overlay-0 {
+  position: unset;
+  margin: auto;
+}
+
+::ng-deep #cdk-overlay-1 {
+  position: unset;
+  margin: auto;
+}
+*/
+
+.mat-raised-button {
+  margin-bottom: 6px;
+}

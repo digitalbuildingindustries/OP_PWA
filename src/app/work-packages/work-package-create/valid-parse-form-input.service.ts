@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,9 @@ export class ValidParseFormInputService {
     this.point = false;
     this.estimatedTimeValid = true;
     this.remainingTimeValid = true;
-  }
 
+  }
+  estimatedTimeValid$: Observable<boolean>;
   //TIME VALIDATION
   estimatedTimeOld: any;
   remainingTimeOld: any;
@@ -39,7 +42,6 @@ export class ValidParseFormInputService {
       this.timeOld = this.remainingTimeOld;
       //this.timeValid = this.remainingTimeValid;
       input = document.getElementById('remainingHours') as HTMLInputElement;
-      console.log("remaining")
     }
 
     // cursor Position
@@ -55,7 +57,7 @@ export class ValidParseFormInputService {
       if (isNaN(s.data) && s.date != ',' && s.date != '.') {
         value = this.timeOld;
       }
-  
+
       if (s.data == ',' && this.point == false && value.length > 0) {
         value = value + ',';
         this.point = true;
@@ -137,7 +139,7 @@ export class ValidParseFormInputService {
       if (!s.includes(".") || !s.includes(",")) {
         return 'P0Y0M0DT' + s + 'H0M0S';
       }
-      console.log(a);
+
       return 'P0Y0M0DT' + a[0] + 'H' + a[1] + 'M0S';
       // P0Y0M0DT12H111M0S
     }
@@ -172,6 +174,8 @@ export class ValidParseFormInputService {
       if (valid) {
         this.dateValid = true;
       }
+    } else{
+      this.dateValid = true;
     }
 
   }
@@ -236,7 +240,7 @@ export class ValidParseFormInputService {
         }
       }
       // if input no number, delete this cha at the end
-      else { displayedValue = displayedValue.slice(0, -1); console.log("sliced: " + displayedValue) }
+      else { displayedValue = displayedValue.slice(0, -1); }
 
       // if user want change the input on an explicit location
       if (cursorPosition == 1 && displayedValue.length == 4) {

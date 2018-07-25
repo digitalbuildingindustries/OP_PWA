@@ -10,12 +10,14 @@ export class HandleSnackbarService {
   number: any;
   title: string;
   show: boolean;
+  duration: number;
 
   constructor() { }
   fillSnackbarWithContent(status: string, workPackage?: WorkPackageModel,
-    workPackges?: WorkPackageModel[], number?: number) {
+    workPackges?: WorkPackageModel[], number?: number, duration?: number) {
     this.number = number;
     this.status = status;
+    this.duration = duration;
     if (workPackage){
       this.title = workPackage.title;
     }

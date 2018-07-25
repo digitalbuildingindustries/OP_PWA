@@ -40,7 +40,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div> -->
-
+<mat-card [ngStyle]="{'padding' : '0px 24px'}"><mat-card-title><h2 class="mat-h2" fxLayoutAlign="center">Work packages</h2></mat-card-title>
 <table mat-table [dataSource]="localStorageAll">
 
     <!-- id -->
@@ -101,3 +101,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 </div>
+</mat-card>

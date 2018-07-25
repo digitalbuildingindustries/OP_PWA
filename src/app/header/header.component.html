@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center"  class="bg">
 
     <div [ngStyle]="!arrowBack && {'visibility': 'hidden'}">
-        <button mat-icon-button [routerLink]="lastRoute">
+        <button mat-icon-button [routerLink]="lastRoute" (click)="hideSnackbar()">
             <i class="material-icons">&#xE5C4;</i>
 
         </button>
@@ -16,7 +16,7 @@
     <mat-menu #workpackageMenu="matMenu">
         <button mat-menu-item routerLink="/work-package-create">Work package</button>
 
-    </mat-menu>
+    </mat-menu> 
 
     <!-- 
     <div>
@@ -34,5 +34,7 @@
     <mat-toolbar class="bg">
         <div [ngStyle]="{'font-size' : '14px'}"><b>{{ header }}</b> </div>
     </mat-toolbar>
-
+  <!--  <i class="material-icons"  [ngStyle]="{'padding-right' : '14px'}">
+        settings
+        </i>-->
 </div>

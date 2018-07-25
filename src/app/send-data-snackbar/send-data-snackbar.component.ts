@@ -21,6 +21,8 @@ export class SendDataSnackbarComponent {
   number: number;
   @Input()
   status: string;
+  @Input()
+  duration: number;
 
   interval: Observable<number>;
   color: string;
@@ -33,8 +35,12 @@ export class SendDataSnackbarComponent {
   }
   ngOnInit() {
     let config = new MatSnackBarConfig();
-    config.duration = 3000;
-
+    if (!this.duration) {
+      config.duration = 3000;
+    }
+    else {
+      config.duration = this.duration;
+    }
     setTimeout(() => {
       switch (this.status) {
         case 'wpSent': {
@@ -61,8 +67,13 @@ export class SendDataSnackbarComponent {
           this.color = 'red-snackbar';
           this.text = 'No Internet connection. Attachment cannot be added. Go online and try again.'
           break;
+        }
+        case 'noInternet': {
+          this.color = 'red-snackbar';
+          this.text = 'No internet connection.';
+          break;
+        }
       }
-    }
 
       config.panelClass = [this.color];
       let snackbarRef = this.snackBar.open(this.text, '', config);

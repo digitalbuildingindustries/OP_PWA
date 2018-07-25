@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-
+    console.log("Neue Versionv erfügbar.");
 
     //this.debugButton = false;
 

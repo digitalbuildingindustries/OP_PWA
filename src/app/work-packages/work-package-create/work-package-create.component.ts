@@ -1,5 +1,6 @@
 import { ValidParseFormInputService } from './valid-parse-form-input.service';
 import { Subscription } from 'rxjs/Subscription';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { GeoLocationService } from '../../geo-location.service';
 import { HandleDataService } from '../../services/handle-data.service';
 import { CheckConnectionService } from '../../services/check-connection.service';
@@ -64,6 +65,7 @@ export class WorkPackageCreateComponent implements OnInit {
     this.STARTDATE = 'startDate';
     this.DUEDATE = 'dueDate';
 
+    this.validParseFormInputService.dateValid = true;
     this.dateValid = true;
 
     this.worckpackageCreateForm = new FormGroup({
@@ -94,6 +96,16 @@ export class WorkPackageCreateComponent implements OnInit {
         this.formValid = false;
       }
     });
+/*  
+    this.validParseFormInputService.estimatedTimeValid$.subscribe((v) => {
+      console.log(v)
+      if(!v){
+        this.formValid = false;
+        console.log(v);
+      } */
+     //});
+
+    
 
   }
 
@@ -138,7 +150,7 @@ export class WorkPackageCreateComponent implements OnInit {
       }
 
       this.handleDataService.handleData(0, this.worckpackageCreateForm.get(this.TITLE).value,
-       description,
+        description,
         this.imgHandlingService.urls,
         this.validParseFormInputService.validateTime(this.worckpackageCreateForm.get(this.ESTIMATEDTIME).value),
         this.validParseFormInputService.validateTime(this.worckpackageCreateForm.get(this.REMAININGHOURS).value),
@@ -153,7 +165,12 @@ export class WorkPackageCreateComponent implements OnInit {
     });
   }
 
- 
+  getScreenSize() {
+    let a = [];
+    a[0] = screen.width - 296 / 2;
+    a[1] = screen.height - 354 / 2;
+    return a;
+  }
 
 
 
