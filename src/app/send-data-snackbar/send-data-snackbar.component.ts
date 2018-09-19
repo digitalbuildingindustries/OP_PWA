@@ -1,7 +1,6 @@
 import { HandleSnackbarService } from './handle-snackbar.service';
 import { Observable } from 'rxjs';
-import { interval } from 'rxjs';
-import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
@@ -20,7 +19,7 @@ export class SendDataSnackbarComponent {
   @Input()
   number: number;
   @Input()
-  status: string;
+  status: 'wpSent' | 'wpsSent' |'wpNotSent' | 'attachmentSent' | 'attachmentNotSent' | 'noInternet';
   @Input()
   duration: number;
 
@@ -78,34 +77,6 @@ export class SendDataSnackbarComponent {
       config.panelClass = [this.color];
       let snackbarRef = this.snackBar.open(this.text, '', config);
 
-
-      /*     if (this.status == false) {
-            config.panelClass = ['red-snackbar'];
-            this.snackBar.open
-              ('No Internet Connection. Workpackage "' + this.title + '" will be sent when you go back online',
-              '', config);
-          }
-          else {
-    
-            if (this.number == 1) {
-    
-              config.panelClass = ['green-snackbar'];
-              let snackBarRef = this.snackBar.open
-                ('Workpackage "' + this.title + '" was sent!',
-                '', config);
-            }
-    
-            else {
-    
-              config.panelClass = ['green-snackbar']
-              let snackBarRef = this.snackBar.open
-                (this.number + ' workpackages were sent!',
-                '', config);
-            }
-    
-          } */
-
-      // this.cdr.detectChanges();
       this.handleSnackbarService.show = false;
     });
   }

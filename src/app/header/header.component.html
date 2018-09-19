@@ -6,9 +6,9 @@
 
         </button>
     </div>
-
+  <!--   [matMenuTriggerFor]="workpackageMenu" -->
     <div>
-        <button mat-icon-button [matMenuTriggerFor]="workpackageMenu">
+        <button mat-icon-button  routerLink="/work-package-create">
             <i class="material-icons">&#xE145;</i>
         </button>
     </div>
@@ -32,9 +32,17 @@
     -->
 
     <mat-toolbar class="bg">
-        <div [ngStyle]="{'font-size' : '14px'}"><b>{{ header }}</b> </div>
+        <div [ngStyle]="{'font-size' : '14px'}" routerLink="/"><b>{{ header }} <br> {{ subheader }}</b> </div>
+     
     </mat-toolbar>
   <!--  <i class="material-icons"  [ngStyle]="{'padding-right' : '14px'}">
         settings
         </i>-->
+
+        <div>
+        <button mat-icon-button>
+            <i class="material-icons" routerLink="/settings">settings</i>
+        </button>
+    </div> 
+
 </div>

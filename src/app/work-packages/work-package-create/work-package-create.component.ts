@@ -1,3 +1,4 @@
+import { SettingsService } from './../../settings/settings.service';
 import { ValidParseFormInputService } from './valid-parse-form-input.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
@@ -46,7 +47,8 @@ export class WorkPackageCreateComponent implements OnInit {
 
 
   constructor(public handleDataService: HandleDataService,
-    public imgHandlingService: ImgHandlingService, public geoLocationService: GeoLocationService, private fb: FormBuilder, public validParseFormInputService: ValidParseFormInputService) {
+    public imgHandlingService: ImgHandlingService, public geoLocationService: GeoLocationService, private fb: FormBuilder,
+    public validParseFormInputService: ValidParseFormInputService, private settingsService: SettingsService) {
     //this.createForm();
     this.mask = [/[0-9]/, /[0-9]?/, /[0-9]?/]
     this.showMask = false;
@@ -96,16 +98,16 @@ export class WorkPackageCreateComponent implements OnInit {
         this.formValid = false;
       }
     });
-/*  
-    this.validParseFormInputService.estimatedTimeValid$.subscribe((v) => {
-      console.log(v)
-      if(!v){
-        this.formValid = false;
-        console.log(v);
-      } */
-     //});
+    /*  
+        this.validParseFormInputService.estimatedTimeValid$.subscribe((v) => {
+          console.log(v)
+          if(!v){
+            this.formValid = false;
+            console.log(v);
+          } */
+    //});
 
-    
+
 
   }
 
@@ -149,14 +151,21 @@ export class WorkPackageCreateComponent implements OnInit {
         var description = descriptionText + '\n\n\n' + 'Geolocation is not supported by your browser or the access is denied.';
       }
 
-      this.handleDataService.handleData(0, this.worckpackageCreateForm.get(this.TITLE).value,
+      this.handleDataService.handleData(
+        0,
+        this.worckpackageCreateForm.get(this.TITLE).value,
         description,
         this.imgHandlingService.urls,
         this.validParseFormInputService.validateTime(this.worckpackageCreateForm.get(this.ESTIMATEDTIME).value),
         this.validParseFormInputService.validateTime(this.worckpackageCreateForm.get(this.REMAININGHOURS).value),
         //this.parsePercentage(this.worckpackageCreateForm.get(this.PERCENTAGEDONE).value),
         this.validParseFormInputService.getPercentageDone(),
-        this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.STARTDATE).value), this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.DUEDATE).value));
+        this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.STARTDATE).value),
+        this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.DUEDATE).value),
+        this.settingsService.get('project')
+      );
+
+
 
       this.worckpackageCreateForm.reset();
       this.imgHandlingService.urls = [];

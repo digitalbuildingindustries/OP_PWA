@@ -1,13 +1,19 @@
-<div fxLayout="column" fxLayoutGap="10px">
-  <div fxLayout="row" fxLayoutAlign="center">
-    <button mat-fab type="button" onclick="document.getElementById('fileToUpload').click()">
-      <i class="material-icons" id="imageUpload">add_circle</i>
-    </button>
-    <input #imageToShow id="fileToUpload" type="file" accept="image/*" style="display:none;" (change)="saveImg($event)">
-    <mat-list>
-      <mat-list-item onclick="document.getElementById('fileToUpload').click()">Image Upload</mat-list-item>
-    </mat-list>
-  </div>
+<div fxLayout="column" fxLayoutGap="10px" [ngStyle]="{ 'width' : '347px'}">
+
+  <!--   <button mat-raised-button [ngStyle]="{ 'width' : '300px'}"></button> -->
+  <button mat-raised-button [ngStyle]="{ 'height' : '90px'}">
+    <div fxLayout="row" fxLayoutAlign="center">
+
+      <button mat-fab type="button" onclick="document.getElementById('fileToUpload').click()">
+        <i class="material-icons" id="imageUpload">add_circle</i>
+      </button>
+      <input #imageToShow id="fileToUpload" type="file" accept="image/*" style="display:none;" (change)="saveImg($event)">
+      <mat-list>
+        <mat-list-item onclick="document.getElementById('fileToUpload').click()">Image Upload</mat-list-item>
+      </mat-list>
+
+    </div>
+  </button>
 
   <div *ngFor="let u of imgHandlingService.urls let i = index">
     <div fxLayout="row" fxLayoutAlign="center">
@@ -19,5 +25,5 @@
       </div>
     </div>
   </div>
- 
+
 </div>

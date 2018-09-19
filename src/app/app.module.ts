@@ -45,6 +45,7 @@ import { SendDataSnackbarComponent } from './send-data-snackbar/send-data-snackb
 import { WorkPackageDetailComponent } from './work-packages/work-package-detail/work-package-detail.component';
 import { TimePipe } from './time.pipe';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     WorkPackageDetailComponent,
     TimePipe,
     DatePickerComponent,
+    SettingsComponent,
     
   ],
   exports: [

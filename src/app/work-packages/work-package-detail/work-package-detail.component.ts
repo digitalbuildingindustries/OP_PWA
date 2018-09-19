@@ -30,6 +30,7 @@ export class WorkPackageDetailComponent implements OnInit {
   public percentageDone: any;
   public startDate: any;
   public dueDate: any;
+  public project: any;
 
   constructor(public workPackageDetailService: WorkPackageDetailService, public sendDataToServerService: SendDataToServerService, public handleSnackbarService: HandleSnackbarService,
     public checkConnectionService: CheckConnectionService) { }
@@ -54,7 +55,8 @@ export class WorkPackageDetailComponent implements OnInit {
         this.dueDate = "-";
       if (this.startDate == null || this.startDate == undefined)
         this.startDate = "-";
-
+      this.project = e['_embedded']['project'].identifier;
+      console.log(e['_embedded']['project'].identifier);
       console.log(e);
       this.spinner = false;
       this.descriptionArray = this.parseMapsString(this.description);
@@ -73,7 +75,8 @@ export class WorkPackageDetailComponent implements OnInit {
             'remainingHours': this.remainingHours,
             'percentageDone': this.percentageDone,
             'startDate': this.startDate,
-            'dueDate': this.dueDate
+            'dueDate': this.dueDate,
+            'project': this.project
           }
           this.workPackageDetailService.saveFileInIndexedDb(newwp);
         }

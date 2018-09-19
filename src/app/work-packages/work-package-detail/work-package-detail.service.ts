@@ -1,3 +1,4 @@
+import { SettingsService } from './../../settings/settings.service';
 import { async } from '@angular/core/testing';
 import { DexieDbService } from '../../dexieDb/dexie-db.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -22,12 +23,15 @@ export class WorkPackageDetailService {
   workpackageAttachment$: Observable<any>;
   wpSubject: BehaviorSubject<any>;
 
-  constructor(public http: HttpClient, public dexieDbService: DexieDbService) {
+  constructor(public http: HttpClient, public dexieDbService: DexieDbService, private settingsService: SettingsService) {
 
-   // this.URL = '/api/v3/projects/testprojekt/work_packages';
-    this.URL = '/api/v3/projects/testprojekt/work_packages';
-   
-    this.APIKEY = 'a9d666f4557626f82eae71a2e286a1b19890a55a9aeff50c61b88c99e0afd23c';
+
+    // this.URL = '/api/v3/projects/testprojekt/work_packages';
+    this.URL = '/api/v3/projects/' + this.settingsService.get('project') + '/work_packages' ;
+
+    //this.APIKEY = '9e1f62518a217b4b3e31bf728c4755c852331af2ba1be15303f0fc62f344e4f8';
+    this.APIKEY = this.settingsService.get('apikey');
+    
     this.HTTPOPTIONSWORKPACKAGE = {
       headers: new HttpHeaders({
         'Authorization': 'Basic ' + btoa('apikey:' + this.APIKEY)
@@ -59,13 +63,13 @@ export class WorkPackageDetailService {
     this.workpackageDetail$ = this.http.get(this.URL, this.HTTPOPTIONSWORKPACKAGE);
     this.workpackageAttachment$ = this.http.get(this.ATTACHMENTURL, this.HTTPOPTIONSWORKPACKAGE);
   }
-//.subscribe((result) => { console.log(result) })
+  //.subscribe((result) => { console.log(result) })
   async deleteFileFromIndexedDb(id: number) {
     await this.dexieDbService.clearStorageDataByIndex(id, this.dexieDbService.allWpDb);
-   // console.log("DELETE " + id);
+    // console.log("DELETE " + id);
   };
 
-  async saveFileInIndexedDb (wp: WorkPackageModel){
+  async saveFileInIndexedDb(wp: WorkPackageModel) {
     await this.dexieDbService.saveStorage(wp, this.dexieDbService.allWpDb);
   }
 

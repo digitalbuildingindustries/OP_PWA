@@ -41,7 +41,7 @@
   </mat-table>
 </div> -->
 <mat-card [ngStyle]="{'padding' : '0px 24px'}"><mat-card-title><h2 class="mat-h2" fxLayoutAlign="center">Work packages</h2></mat-card-title>
-<table mat-table [dataSource]="localStorageAll">
+<table mat-table [dataSource]="AllWPs">
 
     <!-- id -->
     <ng-container matColumnDef="title">
@@ -84,15 +84,15 @@
 
     <!-- id -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef fxFlex="20%"> Id </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let element" fxFlex="20%"> - </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="title" fxFlex="50%">
+    <ng-container matColumnDef="title" >
       <mat-cell *matCellDef="let element" fxFlex="50%"> {{element.title}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="status" fxFlex="30%">
+    <ng-container matColumnDef="status">
       <mat-cell *matCellDef="let element" [ngStyle]="{'color': 'red', 'margin-left': '18px'}" fxFlex="30%"> Local</mat-cell>
     </ng-container>
 

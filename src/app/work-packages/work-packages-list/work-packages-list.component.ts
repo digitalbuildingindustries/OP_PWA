@@ -1,3 +1,4 @@
+import { SettingsService } from './../../settings/settings.service';
 import { WorkPackageDetailService } from '../work-package-detail/work-package-detail.service';
 import { HandleDataService } from '../../services/handle-data.service';
 import { SendDataToServerService } from '../../services/send-data-to-server.service';
@@ -22,11 +23,13 @@ export class WorkPackagesComponent implements OnInit {
   public displayedColumns = ['id', 'title', 'status'];
   public displayColumsWpNotSent = ['id', 'title', 'status'];
   wpEmtpy: boolean;
-  localStorageAll: WorkPackageModel[];
+  AllWPs: WorkPackageModel[];
   a: WorkPackageModel[];
 
-  constructor(public dexieService: DexieDbService, public sendDataToServerService: SendDataToServerService, handleDataService: HandleDataService, public workPackageDetailService: WorkPackageDetailService) {
-    this.localStorageAll = [];
+  constructor(public dexieService: DexieDbService, public sendDataToServerService: SendDataToServerService,
+    handleDataService: HandleDataService, public workPackageDetailService: WorkPackageDetailService,
+    private settingsService: SettingsService) {
+    this.AllWPs = [];
     this.a = [];
   }
 
@@ -41,16 +44,18 @@ export class WorkPackagesComponent implements OnInit {
       this.wpIsEmpty();
     });
     await this.dexieService.getStorageData(this.dexieService.allWpDb).then((e) => {
-      this.localStorageAll = e
+      this.AllWPs = e.filter(item => item.project == this.settingsService.get('project'));
+      //this.AllWPs = e;
       //this.localStorageAll = [ ...this.localStorageAll, ...this.a];
       //this.localStorageAll.concat(this.a);
     })
+
   }
 
   wpIsEmpty() {
     if (this.a.length == 0) {
       this.wpEmtpy = true;
-    }   
+    }
     else {
       this.wpEmtpy = false;
     }

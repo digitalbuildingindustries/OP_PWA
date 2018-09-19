@@ -5,9 +5,8 @@ import { WorkPackageModel } from '../work-packages/work-package.model';
 import { CheckConnectionService } from './check-connection.service';
 import { DexieDbService } from '../dexieDb/dexie-db.service';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs';
+
 
 @Injectable()
 export class HandleDataService {
@@ -27,19 +26,19 @@ export class HandleDataService {
     Observable.interval(1000).subscribe(x => {
       //console.log("der imgwert ist:  "+imgHandlingService.urls[0]);
       //  console.log("Connectionstauts: " + this.checkConnectionService.internetConnectionStatus);
-      //console.log("Connectionstatus: " + this.checkConnectionService.internetConnectionStatus)
-
+     //  console.log("Connectionstatus: " + this.checkConnectionService.internetConnectionStatus)
+     //  console.log("windows.navigator.online " + navigator.onLine)
       if (this.checkConnectionService.internetConnectionStatus) {
         this.sendDataToServerService.prepareWorkpackagesToSend();
       }
     });
   }
 
-  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string, percentageDone?: any, startDate?: any, dueDate?: any) {
-
+  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string, percentageDone?: any, startDate?: any, dueDate?: any, project?:any) {
+console.log(project);
     //generate Timestamp for unique id 
     let date = new Date();
-    this.workPackageModel = { 'id': 't' + date.getTime(), 'title': t, 'description': d, 'img': u, 'sent': false, 'estimatedTime' :eT, 'remainingHours': rH, 'percentageDone': percentageDone, 'startDate': startDate, 'dueDate': dueDate};
+    this.workPackageModel = { 'id': 't' + date.getTime(), 'title': t, 'description': d, 'img': u, 'sent': false, 'estimatedTime': eT, 'remainingHours': rH, 'percentageDone': percentageDone, 'startDate': startDate, 'dueDate': dueDate, 'project':project };
 
     if (!this.checkConnectionService.internetConnectionStatus) {
       try {

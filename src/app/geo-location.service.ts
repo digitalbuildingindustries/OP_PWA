@@ -34,10 +34,7 @@ export class GeoLocationService {
     )
   );
   
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-      return new Promise((resolve, reject) => resolve(false));
-    }
+    } 
 
   }
 

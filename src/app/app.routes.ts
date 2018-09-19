@@ -1,3 +1,4 @@
+import { SettingsComponent } from './settings/settings.component';
 import { WorkPackageDetailComponent } from './work-packages/work-package-detail/work-package-detail.component';
 import { WorkPackagesComponent } from './work-packages/work-packages-list/work-packages-list.component';
 import { Routes } from '@angular/router';
@@ -9,6 +10,7 @@ export const ROUTES: Routes = [
   {path: 'work-package-create', component: WorkPackageCreateComponent},
   {path: 'work-package-list', component: WorkPackagesComponent},
   {path: 'work-package-detail', component: WorkPackageDetailComponent},
+  {path: 'settings', component: SettingsComponent},
   {path: '**', redirectTo: '/'}
  
 ];

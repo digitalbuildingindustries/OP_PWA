@@ -125,8 +125,9 @@ export class ValidParseFormInputService {
 
   validateTime(s: string) {
     var a = [];
-    s = s.split(" h")[0];
     if (String(s).length > 0 && s != null && s != undefined) {
+    s = s.split(" h")[0];
+
       if (s.includes(",")) {
         a = s.split(",");
       }

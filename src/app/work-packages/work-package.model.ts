@@ -10,4 +10,5 @@ export class WorkPackageModel{
     percentageDone?: any;
     startDate?: any;
     dueDate?: any;
+    project?: any;
 }

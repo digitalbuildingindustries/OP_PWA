@@ -31,14 +31,15 @@ export class AppComponent implements OnInit {
 
     this.sb = this.handleSnackbarService.show;
     this.debugButton = false;
-
+    if (localStorage.getItem("apikey") === null || localStorage.getItem("project") === null) {
+      localStorage.setItem('apikey', '9e1f62518a217b4b3e31bf728c4755c852331af2ba1be15303f0fc62f344e4f8');
+      localStorage.setItem('project', 'testproject');
+    }
   }
 
 
   ngOnInit() {
-    console.log("Neue Versionv erfügbar.");
-
-    //this.debugButton = false;
+       //this.debugButton = false;
 
   }
 

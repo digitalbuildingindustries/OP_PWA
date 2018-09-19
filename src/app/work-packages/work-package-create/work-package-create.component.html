@@ -1,89 +1,92 @@
-<mat-card [ngStyle]="{'padding' : '0px 24px'}"><mat-card-title><h2 class="mat-h2" fxLayoutAlign="center">Create a new work package</h2></mat-card-title>
-<div fxLayout="column" fxLayoutGap="20px">
-  
-  <form [formGroup]="worckpackageCreateForm" #formDir="ngForm">
+<mat-card [ngStyle]="{'padding' : '0px 24px'}">
+  <mat-card-title>
+    <h2 class="mat-h2" fxLayoutAlign="center">Create a new work package</h2>
+  </mat-card-title>
+  <div fxLayout="column" fxLayoutGap="20px">
 
-    <mat-form-field [ngStyle]="{'width' : '100%'}">
-      <input name="title" matInput placeholder="Title" formControlName="title" required>
-      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-        <mat-error *ngIf="title.errors.required">
-          Title is
-          <strong>required </strong>.
-        </mat-error>
-      </div>
-    </mat-form-field>
+    <form [formGroup]="worckpackageCreateForm" #formDir="ngForm">
 
-
-    <mat-form-field [ngStyle]="{'width' : '100%'}">
-      <textarea name="description" matInput matTextareaAutosize minRows="6" placeholder="Description" formControlName="description"
-        matAutosizeMinRows="3"></textarea>
-    </mat-form-field>
-
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Advanced data
-          </mat-panel-title>
-
-        </mat-expansion-panel-header>
-
-        <mat-form-field>
-          <input matInput placeholder="Estimated Time (in hours)" formControlName="estimatedTime" (input)="validParseFormInputService.parseTime($event, this.worckpackageCreateForm, this.ESTIMATEDTIME)"
-            #estimatedTime id="estimatedTime">
-          <div *ngIf="!validParseFormInputService.estimatedTimeValid" class="alert alert-danger">
-            <mat-error *ngIf="!validParseFormInputService.estimatedTimeValid">
-              No valid number.
-            </mat-error>
-          </div>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Remaining Hours" formControlName="remainingHours" (input)="validParseFormInputService.parseTime($event, this.worckpackageCreateForm, this.REMAININGHOURS)"
-            #remainingHours id="remainingHours">
-          <div *ngIf="!validParseFormInputService.remainingTimeValid" class="alert alert-danger">
-            <mat-error *ngIf="!validParseFormInputService.remainingTimeValid">
-              No valid number.
-            </mat-error>
-          </div>
-        </mat-form-field>
+      <mat-form-field [ngStyle]="{'width' : '100%'}">
+        <input name="title" matInput placeholder="Title" formControlName="title" required>
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+          <mat-error *ngIf="title.errors.required">
+            Title is
+            <strong>required </strong>.
+          </mat-error>
+        </div>
+      </mat-form-field>
 
 
+      <mat-form-field [ngStyle]="{'width' : '100%'}">
+        <textarea name="description" matInput matTextareaAutosize minRows="6" placeholder="Description" formControlName="description"
+          matAutosizeMinRows="3"></textarea>
+      </mat-form-field>
 
-        <mat-form-field>
-          <div (click)="startDate.open()">
-            <input matInput [matDatepicker]="startDate" placeholder="Start date" formControlName="startDate" [ngStyle]="!validParseFormInputService.dateValid && {'color': '#f44336'}">
-          </div>
-          <div *ngIf="!validParseFormInputService.dateValid" class="alert alert-danger">
-            <mat-error *ngIf="!validParseFormInputService.dateValid">
-              The
-              <b>start date</b> must be before the
-              <b> due date</b>.
-            </mat-error>
-          </div>
-          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-          <mat-datepicker touchUi="true" #startDate disabled="false"></mat-datepicker>
-        </mat-form-field>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Advanced data
+            </mat-panel-title>
 
-        <mat-form-field>
-          <div (click)="dueDate.open()">
-            <input matInput [matDatepicker]="dueDate" placeholder="Due date" formControlName="dueDate" [ngStyle]="!validParseFormInputService.dateValid && {'color': '#f44336'}"
-              class="errorDate">
-          </div>
-          <div *ngIf="!validParseFormInputService.dateValid" class="alert alert-danger">
-            <mat-error *ngIf="!validParseFormInputService.dateValid">
-              The
-              <b>start date</b> must be before the
-              <b> due date</b>.
-            </mat-error>
-          </div>
-          <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
-          <mat-datepicker touchUi="true" #dueDate disabled="false"></mat-datepicker>
-        </mat-form-field>
+          </mat-expansion-panel-header>
+
+          <mat-form-field>
+            <input matInput placeholder="Estimated Time (in hours)" formControlName="estimatedTime" (input)="validParseFormInputService.parseTime($event, this.worckpackageCreateForm, this.ESTIMATEDTIME)"
+              #estimatedTime id="estimatedTime">
+            <div *ngIf="!validParseFormInputService.estimatedTimeValid" class="alert alert-danger">
+              <mat-error *ngIf="!validParseFormInputService.estimatedTimeValid">
+                No valid number.
+              </mat-error>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Remaining Hours" formControlName="remainingHours" (input)="validParseFormInputService.parseTime($event, this.worckpackageCreateForm, this.REMAININGHOURS)"
+              #remainingHours id="remainingHours">
+            <div *ngIf="!validParseFormInputService.remainingTimeValid" class="alert alert-danger">
+              <mat-error *ngIf="!validParseFormInputService.remainingTimeValid">
+                No valid number.
+              </mat-error>
+            </div>
+          </mat-form-field>
 
 
 
-        <!--         <mat-form-field>
+          <mat-form-field>
+            <div (click)="startDate.open()">
+              <input matInput [matDatepicker]="startDate" placeholder="Start date" formControlName="startDate" [ngStyle]="!validParseFormInputService.dateValid && {'color': '#f44336'}">
+            </div>
+            <div *ngIf="!validParseFormInputService.dateValid" class="alert alert-danger">
+              <mat-error *ngIf="!validParseFormInputService.dateValid">
+                The
+                <b>start date</b> must be before the
+                <b> due date</b>.
+              </mat-error>
+            </div>
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #startDate disabled="false"></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <div (click)="dueDate.open()">
+              <input matInput [matDatepicker]="dueDate" placeholder="Due date" formControlName="dueDate" [ngStyle]="!validParseFormInputService.dateValid && {'color': '#f44336'}"
+                class="errorDate">
+            </div>
+            <div *ngIf="!validParseFormInputService.dateValid" class="alert alert-danger">
+              <mat-error *ngIf="!validParseFormInputService.dateValid">
+                The
+                <b>start date</b> must be before the
+                <b> due date</b>.
+              </mat-error>
+            </div>
+            <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #dueDate disabled="false"></mat-datepicker>
+          </mat-form-field>
+
+
+
+          <!--         <mat-form-field>
           <input matInput [matDatepicker]="startDate" placeholder="Choose the start date">
           <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="alert alert-danger">
             <mat-error *ngIf="startDate.errors.pattern">
@@ -105,26 +108,29 @@
           <mat-datepicker #dueDate></mat-datepicker>
         </mat-form-field> -->
 
-        <!-- [textMask]="{mask: mask, guide:false}"  (input)="parsePercentage($event)"-->
-        <mat-form-field>
-          <input matInput placeholder="Progress (1 - 100%)" formControlName="percentageDone" (input)="validParseFormInputService.parsePercentage($event, this.worckpackageCreateForm, this.PERCENTAGEDONE)"
-            #percentageDone id="percentageDone">
-          <div *ngIf="percentageDone.invalid && (percentageDone.dirty || percentageDone.touched)" class="alert alert-danger">
-            <mat-error *ngIf="percentageDone.errors.pattern">
-              No Valid Value. The number must be between 1 and 100.
-            </mat-error>
-          </div>
-        </mat-form-field>
+          <!-- [textMask]="{mask: mask, guide:false}"  (input)="parsePercentage($event)"-->
+          <mat-form-field>
+            <input matInput placeholder="Progress (1 - 100%)" formControlName="percentageDone" (input)="validParseFormInputService.parsePercentage($event, this.worckpackageCreateForm, this.PERCENTAGEDONE)"
+              #percentageDone id="percentageDone">
+            <div *ngIf="percentageDone.invalid && (percentageDone.dirty || percentageDone.touched)" class="alert alert-danger">
+              <mat-error *ngIf="percentageDone.errors.pattern">
+                No Valid Value. The number must be between 1 and 100.
+              </mat-error>
+            </div>
+          </mat-form-field>
 
-      </mat-expansion-panel>
-    </mat-accordion>
+        </mat-expansion-panel>
+      </mat-accordion>
 
-  </form>
+    </form>
 
-  <div fxLayout="row" fxLayoutAlign="center">
-    <app-camera></app-camera>
+    <div fxLayout="row" fxLayoutAlign="center">
+     
+        <app-camera></app-camera>
+  
+    </div>
+    <button mat-raised-button [disabled]="!formValid || !this.validParseFormInputService.remainingTimeValid || !this.validParseFormInputService.estimatedTimeValid"
+      (click)="save()" [ngStyle]="{'margin-bottom' : '6px'}">Create Work package</button>
+
   </div>
-  <button mat-raised-button [disabled]="!formValid || !this.validParseFormInputService.remainingTimeValid || !this.validParseFormInputService.estimatedTimeValid" (click)="save()" [ngStyle]="{'margin-bottom' : '6px'}">Create Work package</button>
-
-</div>
 </mat-card>

@@ -1,3 +1,4 @@
+import { SettingsService } from './../settings/settings.service';
 import { ImgHandlingService } from '../work-packages/work-package-create/img-handling.service';
 import { Dexie } from 'dexie';
 import { WorkPackageModel } from '../work-packages/work-package.model';
@@ -25,16 +26,19 @@ export class SendDataToServerService {
   public attachmentCount;
 
   constructor(public dexieService: DexieDbService, public handleSnackbarService: HandleSnackbarService,
-    public router: Router, public http: HttpClient, public imgHandlingService: ImgHandlingService) {
+    public router: Router, public http: HttpClient, public imgHandlingService: ImgHandlingService,
+    private settingsService: SettingsService) {
 
     this.allowTosendData = true;
     this.numberOfWorkpackages = 0;
     this.attachmentCount = 0;
     this.workpackageCount = 0;
-    // this.URL = '/api/v3/projects/testprojekt/work_packages';
-    this.URL = '/api/v3/projects/testprojekt/work_packages';
-    this.APIKEY = 'a9d666f4557626f82eae71a2e286a1b19890a55a9aeff50c61b88c99e0afd23c';
 
+    //this.URL = '/api/v3/projects/testprojekt/work_packages';
+    this.URL = '/api/v3/projects/' + this.settingsService.get('project') + '/work_packages' ;
+
+    //this.APIKEY = '9e1f62518a217b4b3e31bf728c4755c852331af2ba1be15303f0fc62f344e4f8';
+    this.APIKEY = this.settingsService.get('apikey');
 
     //API DOCKER INSZANCE
     //this.APIKEY = '8aaa0be4c1e320bd2b07232b5d35d1d3cbedbd5158152cec2e20e602d4c2a04e';
@@ -95,7 +99,8 @@ export class SendDataToServerService {
         let w = {
           'id': a.id,
           'title': this.workpackage.title,
-          'sent': true
+          'sent': true,
+          'project': this.workpackage.project
         };
         this.dexieService.saveStorage(w, this.dexieService.allWpDb).then((e) => console.log(e));
       });
