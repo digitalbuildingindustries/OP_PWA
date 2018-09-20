@@ -1,21 +1,20 @@
 import { allWorkPackageDb } from './allWorkPackageDb';
 import { WorkPackageDb } from './WorkPackageDb'
 import { WorkPackageModel } from '../work-packages/work-package.model';
-import { CameraComponent } from '../work-packages/work-package-create/camera/camera.component';
 import { Injectable } from '@angular/core';
-import Dexie from 'dexie';
 
 @Injectable()
 export class DexieDbService {
+
   public StorageAll: WorkPackageModel[];
-  result: any;
-  public db: WorkPackageDb;
+  //Work packages not yet send, because of no internet connection
+  public WpToSendDb: WorkPackageDb;
+  //Work packages, that are already sent
   public allWpDb: allWorkPackageDb;
 
   constructor() {
-
     this.StorageAll = [];
-    this.db = new WorkPackageDb();
+    this.WpToSendDb = new WorkPackageDb();
     this.allWpDb = new allWorkPackageDb();
   }
 
@@ -23,7 +22,6 @@ export class DexieDbService {
 
   // Create new
   async saveStorage(w: WorkPackageModel, db: any) {
-
     if (db.name == "Workpackages") {
       db.workpackages.put(w).then(result => {
         // Success
@@ -54,7 +52,6 @@ export class DexieDbService {
     }
   }
 
-
   //READ ALL
   async getStorageData(db: any): Promise<WorkPackageModel[]> {
     if (db.name == "Workpackages") {
@@ -77,10 +74,8 @@ export class DexieDbService {
   //DELETE ALL
   async clearStorageData() {
     this.StorageAll = [];
-    await this.db.delete().then(() =>
-      this.db.open()
-      //this.db.close(),
-      //  console.log("deleted")
+    await this.WpToSendDb.delete().then(() =>
+      this.WpToSendDb.open()
     );
   }
 
@@ -90,56 +85,14 @@ export class DexieDbService {
       await db.workpackagesAll.where('id').equals(key).delete();
     }
     else {
-      await this.db.workpackages.where('id').equals(key).delete();
+      await this.WpToSendDb.workpackages.where('id').equals(key).delete();
     }
   }
 
   // READ STATUS
   async getStorageStatus(): Promise<number> {
-    // return this.StorageAll.length;
-    this.StorageAll = await this.db.workpackages.toArray();
+    this.StorageAll = await this.WpToSendDb.workpackages.toArray();
     return this.StorageAll.length;
   }
 
 }
-
-//                    <--------------------------------------------------- LOCAL STORAGE IMPLEMENTATION ------------------------------->
-/*   //Delete
-    clearLocalStorageData() {
-      localStorage.clear();
-      console.log("localStorage cleared");
-      this.count = 0;
-    } */
-    //Create
-  /*   save(w: WorkPackageModel) {
-      localStorage.setItem(this.count, JSON.stringify(w));
-      this.count++;
-    } */
-
-  /*   //Delete
-    clearLocalStorageData() {
-      localStorage.clear();
-      console.log("localStorage cleared");
-      this.count = 0;
-    } */
-
-  /*   //Read status
-    getLocalStorageStatus(): number {
-      let count = 0;
-      for (var i = 0; i < 40; i++) {
-        if (JSON.parse(localStorage.getItem(JSON.stringify(i))) != null) {
-          count++;
-        }
-      }
-      return count;
-    } 
-     //Read Key      
-  getactualKey() {
-    for (let i = 0; i < 40; i++) {
-      if (!localStorage.getItem(JSON.stringify(i))) {
-        return i;
-      }
-    }
-  }
-    
-    */

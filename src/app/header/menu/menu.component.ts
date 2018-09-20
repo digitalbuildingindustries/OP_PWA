@@ -7,15 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Output() debugReloads = new EventEmitter<boolean>();
-
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  debugReload(event) {
-    this.debugReloads.emit(event);
-  }
+  ngOnInit() { }
 
 }

@@ -1,23 +1,20 @@
-import { SettingsService } from './../settings/settings.service';
-import { ImgHandlingService } from '../work-packages/work-package-create/img-handling.service';
-import { Dexie } from 'dexie';
+import { SettingsService } from '../settings/settings.service';
 import { WorkPackageModel } from '../work-packages/work-package.model';
-import { HandleSnackbarService } from '../send-data-snackbar/handle-snackbar.service';
+import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
 import { DexieDbService } from '../dexieDb/dexie-db.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SendDataToServerService {
 
-  workpackageCount: number;
-  workpackage: WorkPackageModel;
-  workpackages: WorkPackageModel[];
-  readonly URL;
-  readonly APIKEY;
-  readonly HTTPOPTIONSWORKPACKAGE;
+  public workpackageCount: number;
+  public workpackage: WorkPackageModel;
+  public workpackages: WorkPackageModel[];
+  private readonly URL;
+  private readonly APIKEY;
+  private readonly HTTPOPTIONSWORKPACKAGE;
   public attachmentURL;
   public priorityUrl;
   public debugS: any;
@@ -25,44 +22,32 @@ export class SendDataToServerService {
   public numberOfWorkpackages;
   public attachmentCount;
 
-  constructor(public dexieService: DexieDbService, public handleSnackbarService: HandleSnackbarService,
-    public router: Router, public http: HttpClient, public imgHandlingService: ImgHandlingService,
-    private settingsService: SettingsService) {
+  constructor(private dexieService: DexieDbService, private handleSnackbarService: HandleSnackbarService,
+    private router: Router, private http: HttpClient, private settingsService: SettingsService) {
+
+    if (localStorage.getItem("apikey") === null || localStorage.getItem("project") === null) {
+      localStorage.setItem('apikey', '5a743dbbf7889f7d54a9cc9559590bc16c04d880ed970661ab734bde5674fcd2');
+      localStorage.setItem('project', 'testprojekt');
+    }
 
     this.allowTosendData = true;
     this.numberOfWorkpackages = 0;
     this.attachmentCount = 0;
     this.workpackageCount = 0;
-
-    //this.URL = '/api/v3/projects/testprojekt/work_packages';
-    this.URL = '/api/v3/projects/' + this.settingsService.get('project') + '/work_packages' ;
-
-    //this.APIKEY = '9e1f62518a217b4b3e31bf728c4755c852331af2ba1be15303f0fc62f344e4f8';
+    this.URL = '/api/v3/projects/' + this.settingsService.get('project') + '/work_packages';
     this.APIKEY = this.settingsService.get('apikey');
-
-    //API DOCKER INSZANCE
-    //this.APIKEY = '8aaa0be4c1e320bd2b07232b5d35d1d3cbedbd5158152cec2e20e602d4c2a04e';
     this.workpackages = [];
     this.HTTPOPTIONSWORKPACKAGE = {
       headers: new HttpHeaders({
         'Authorization': 'Basic ' + btoa('apikey:' + this.APIKEY),
-        //"Cache-Control":"no-cache",
-        // 'Content-Type' : 'text/plain'
-        // 'Content-Type' : 'application/json'
-        //'Content-Type' : 'application/x-www-form-urlencoded'
-        //  'Content-Type': 'multipart/form-data'
-        // 'Access-Control-Allow-Origin' : "*",
-        //'Access-Control-Allow-Credentials' : 'true'
-        // 'Content-Type': 'application/json; charset=utf-8'
-        // 'Access-Control-Max-Age': '100'
       })
     };
+
   }
 
   //4. send Attachment
   async sendA(url: any, img: any, imageNumber?: number) {
     this.attachmentURL = url;
-
     if (imageNumber) {
       this.attachmentCount = imageNumber;
     }
@@ -70,12 +55,10 @@ export class SendDataToServerService {
     if (img) {
       for (let element of img) {
         var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
-        // var blobFile = new Blob([element], { type: 'text/html' });
         formData.append('file', blobFile, 'file');
         formData.append('metadata', JSON.stringify({ 'fileName': 'Image_' + this.attachmentCount + this.guessImageMime(element) }));
         this.attachmentCount++;
         await this.http.post<any>(this.attachmentURL, formData, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
-          //    console.log('4.sendA: ' + this.attachmentCount)               
         });
       };
     }
@@ -85,17 +68,11 @@ export class SendDataToServerService {
   async sendW(wpToSend: any) {
     let a;
     try {
-      /*       var formDat = new FormData();
-            formDat.append('subject', 'file');
-            return this.http.post<any>(this.URL, formDat, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => { */
-      console.log(wpToSend);
       return this.http.post<WorkPackageModel>(this.URL, wpToSend, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
         console.log(data),
           a = data,
-          // this.priorityUrl = a._links.priority.href;
           this.attachmentURL = a._links.addAttachment.href,
           this.attachmentCount = 0;
-        //  console.log("NEUE ID: " + a.id)
         let w = {
           'id': a.id,
           'title': this.workpackage.title,
@@ -109,12 +86,6 @@ export class SendDataToServerService {
     }
   }
 
-  /*   async sendPriority() {
-      console.log("PRIO URL: " + this.priorityUrl);
-      let t = { 'title': 'Low' }
-      return this.http.post<any>(this.priorityUrl, t, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => { console.log(data) })
-    } */
-
   //1. prepare
   async prepareWorkpackagesToSend(workpackage?: WorkPackageModel) {
     if (workpackage) {
@@ -124,10 +95,9 @@ export class SendDataToServerService {
     }
     else {
       //get workpackage & refresh workpackagecount
-      await this.dexieService.getStorageData(this.dexieService.db).then((e) => {
+      await this.dexieService.getStorageData(this.dexieService.WpToSendDb).then((e) => {
         this.workpackages = e,
           this.workpackageCount = this.workpackages.length;
-        //console.log("Darf gesendet werden: " + this.allowTosendData)
         if (this.allowTosendData == true) {
           this.send();
           this.allowTosendData = false;
@@ -148,28 +118,19 @@ export class SendDataToServerService {
           'estimatedTime': this.workpackage.estimatedTime,
           'remainingTime': this.workpackage.remainingHours,
           'percentageDone': this.workpackage.percentageDone,
-          //'percentageDone': '100',
-          //  'startDate': '2019-02-11',
-          // 'dueDate': '2019-02-11',
           'startDate': this.workpackage.startDate,
           'dueDate': this.workpackage.dueDate
         };
         try {
-
           await this.sendW(wpToSend);
-          //  await this.sendPriority();
           await this.sendA(this.attachmentURL, this.workpackage.img).then(() => {
-            // console.log("attachments sent?");
-            //   console.log("5. after sendw " + element.title);
             if (this.workpackageCount > 0) {
               this.workpackageCount--;
             }
-            //  console.log("WP COUNT: " + this.workpackageCount);
             if (this.workpackageCount == 0) {
               this.setSnackbarContent();
             }
-            this.dexieService.clearStorageDataByIndex(this.workpackage.id, this.dexieService.db).then(() => {
-              //console.log("6. Try to delete stuff" + wpToSend.subject);
+            this.dexieService.clearStorageDataByIndex(this.workpackage.id, this.dexieService.WpToSendDb).then(() => {
             })
           });
         }
@@ -189,17 +150,14 @@ export class SendDataToServerService {
   };
 
   setSnackbarContent() {
-    // console.log("SET SNACKBAR CONTENT")
     if (this.numberOfWorkpackages > 1) {
       this.handleSnackbarService.fillSnackbarWithContent('wpsSent', null, null, this.numberOfWorkpackages);
     }
     if (this.numberOfWorkpackages == 1) {
-      this.handleSnackbarService.fillSnackbarWithContent('wpSent', this.workpackage, null, 1);
+      this.handleSnackbarService.fillSnackbarWithContent('wpSent', this.workpackage, null);
     }
     this.numberOfWorkpackages = 0;
-    // this.router.navigate(['/work-package-create']);
     this.router.navigate(['/work-package-list']);
-    //   window.location.reload();
   };
 
   // Check Img Format

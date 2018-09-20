@@ -1,82 +1,67 @@
-import { HandleDataService } from './services/handle-data.service';
-import { BackgroundSyncService } from './background-sync.service';
-import { SendDataToServerService } from './services/send-data-to-server.service';
-import { HandleSnackbarService } from './send-data-snackbar/handle-snackbar.service';
-import { ImgHandlingService } from './work-packages/work-package-create/img-handling.service';
-import { CheckConnectionService } from './services/check-connection.service';
-import { CameraComponent } from './work-packages/work-package-create/camera/camera.component';
+//Routing Module
+import { AppRoutingModule } from './snackbar-popup/routing/app-routing.module';
+import { ROUTES } from './snackbar-popup/routing/app.routes';
 
-// Layout Components
-import { AngularMaterialModule } from './angular-material/angular-material.module';
+// Layout Modules
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+
+//Angular Modules
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 //Service Worker Components
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { UpdateAppService } from './update-app.service';
-
-//Extern Componetns
-import { TextMaskModule } from 'angular2-text-mask';
-
-//Angular Components
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 //Custom Components
 import { AppComponent } from './app.component';
-import { ROUTES } from './app.routes';
-import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './header/menu/menu.component';
+import { CameraComponent } from './work-packages/work-package-create/camera/camera.component';
 import { HeaderComponent } from './header/header.component';
 import { WorkPackagesComponent } from './work-packages/work-packages-list/work-packages-list.component';
 import { WorkPackageCreateComponent } from './work-packages/work-package-create/work-package-create.component';
+import { SendDataSnackbarComponent } from './snackbar-PopUp/send-data-snackbar.component';
+import { WorkPackageDetailComponent } from './work-packages/work-package-detail/work-package-detail.component';
+import { SettingsComponent } from './settings/settings.component';
 
 //Services
 import { DexieDbService } from './dexieDb/dexie-db.service';
+import { HandleDataService } from './services/handle-data.service';
+import { SendDataToServerService } from './services/send-data-to-server.service';
+import { HandleSnackbarService } from './snackbar-PopUp/handle-snackbar.service';
+import { ImgHandlingService } from './work-packages/work-package-create/img-handling.service';
+import { CheckConnectionService } from './services/check-connection.service';
 
+//Pipes
+import { TimePipe } from './pipes/time.pipe';
 
-//Directives
-import { LongPressDirective } from './directives/long-press.directive';
-import { UpdateSnackbarComponent } from './update-snackbar/update-snackbar.component';
-import { SendDataSnackbarComponent } from './send-data-snackbar/send-data-snackbar.component';
-import { WorkPackageDetailComponent } from './work-packages/work-package-detail/work-package-detail.component';
-import { TimePipe } from './time.pipe';
-import { DatePickerComponent } from './date-picker/date-picker.component';
-import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    UpdateSnackbarComponent,
-
     MenuComponent,
     HeaderComponent,
-
     WorkPackagesComponent,
     WorkPackageCreateComponent,
-
-    LongPressDirective,
     CameraComponent,
     SendDataSnackbarComponent,
     WorkPackageDetailComponent,
-    TimePipe,
-    DatePickerComponent,
     SettingsComponent,
-    
+
+    TimePipe,
+
   ],
   exports: [
-    LongPressDirective,
 
   ],
   imports: [
     FlexLayoutModule,
     AngularMaterialModule,
-
-    TextMaskModule,
 
     BrowserModule,
     ReactiveFormsModule,
@@ -85,11 +70,12 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
-       
+
   ],
 
   providers: [DexieDbService,
-    UpdateAppService, CheckConnectionService, ImgHandlingService, HandleSnackbarService, SendDataToServerService, BackgroundSyncService, HandleDataService],
+    CheckConnectionService, ImgHandlingService, HandleSnackbarService,
+    SendDataToServerService, HandleDataService],
   bootstrap: [AppComponent]
 
 })

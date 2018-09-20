@@ -9,29 +9,28 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
   <ng-template appSnackbar></ng-template>
   `,
   styles: [`
-  
-  `]
+    `]
 })
 export class SendDataSnackbarComponent {
 
   @Input()
   title: string;
   @Input()
-  number: number;
+  number: number; 
+  //Possible Events
   @Input()
-  status: 'wpSent' | 'wpsSent' |'wpNotSent' | 'attachmentSent' | 'attachmentNotSent' | 'noInternet';
+  status: 'wpSent' | 'wpsSent' |'wpNotSent' | 'attachmentSent' | 'attachmentNotSent' | 'noInternet' | 'settingsUpdated';
   @Input()
   duration: number;
 
   interval: Observable<number>;
-  color: string;
+  color: 'green-snackbar' | 'red-snackbar';
   text: string;
 
   constructor(public handleSnackbarService: HandleSnackbarService,
     public snackBar: MatSnackBar,
-  ) {
+  ) {  }
 
-  }
   ngOnInit() {
     let config = new MatSnackBarConfig();
     if (!this.duration) {
@@ -41,6 +40,7 @@ export class SendDataSnackbarComponent {
       config.duration = this.duration;
     }
     setTimeout(() => {
+      //Sets the Text of the Snackbar-PopUp-Feedback
       switch (this.status) {
         case 'wpSent': {
           this.color = 'green-snackbar';
@@ -72,11 +72,14 @@ export class SendDataSnackbarComponent {
           this.text = 'No internet connection.';
           break;
         }
+        case 'settingsUpdated': {
+          this.color = 'green-snackbar';
+          this.text = 'Settings updated.';
+          break;
+        }
       }
-
       config.panelClass = [this.color];
-      let snackbarRef = this.snackBar.open(this.text, '', config);
-
+      this.snackBar.open(this.text, '', config);
       this.handleSnackbarService.show = false;
     });
   }

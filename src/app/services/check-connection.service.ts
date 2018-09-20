@@ -1,4 +1,3 @@
-import { SendDataToServerService } from './send-data-to-server.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/Rx';
@@ -7,9 +6,10 @@ import 'rxjs/Rx';
 export class CheckConnectionService {
 
   online$: Observable<boolean>;
+  //Is there any internetconnection?
   internetConnectionStatus: boolean;
 
-  constructor(public sendDataToServerService: SendDataToServerService) {
+  constructor() {
 
     this.online$ = Observable.merge(
       Observable.of(navigator.onLine),
@@ -18,7 +18,6 @@ export class CheckConnectionService {
     )
 
     this.online$.subscribe(isOnline => {
-    //  console.log(isOnline);
       if (isOnline) {
         this.internetConnectionStatus = true;
       } else {

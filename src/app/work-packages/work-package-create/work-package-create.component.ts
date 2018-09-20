@@ -1,14 +1,11 @@
-import { SettingsService } from './../../settings/settings.service';
+import { SettingsService } from '../../settings/settings.service';
 import { ValidParseFormInputService } from './valid-parse-form-input.service';
 import { Subscription } from 'rxjs/Subscription';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-import { GeoLocationService } from '../../geo-location.service';
+import { GeoLocationService } from '../../services/geo-location.service';
 import { HandleDataService } from '../../services/handle-data.service';
-import { CheckConnectionService } from '../../services/check-connection.service';
 import { Component, OnInit } from '@angular/core';
 import { ImgHandlingService } from './img-handling.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-
 
 @Component({
   selector: 'app-work-package-create',
@@ -21,12 +18,9 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   ],
 })
 
-
 export class WorkPackageCreateComponent implements OnInit {
 
   worckpackageCreateForm: FormGroup;
-  //title: string;
-  // description: string;
   TITLE: string;
   DESCRIPTION: string;
   ESTIMATEDTIME: string;
@@ -49,16 +43,10 @@ export class WorkPackageCreateComponent implements OnInit {
   constructor(public handleDataService: HandleDataService,
     public imgHandlingService: ImgHandlingService, public geoLocationService: GeoLocationService, private fb: FormBuilder,
     public validParseFormInputService: ValidParseFormInputService, private settingsService: SettingsService) {
-    //this.createForm();
-    this.mask = [/[0-9]/, /[0-9]?/, /[0-9]?/]
-    this.showMask = false;
-    this.myModel = ''
-    this.modelWithValue = '5554441234'
-    this.formControlInput.setValue('5555551234')
+
   }
 
   ngOnInit() {
-
     this.TITLE = 'title';
     this.DESCRIPTION = 'description';
     this.ESTIMATEDTIME = 'estimatedTime';
@@ -83,7 +71,6 @@ export class WorkPackageCreateComponent implements OnInit {
       [this.DUEDATE]: new FormControl({ value: '', disabled: true })
     });
 
-
     this.dueDate$ = this.worckpackageCreateForm.get(this.DUEDATE).valueChanges.subscribe(() => {
       this.validParseFormInputService.validateDate(this.worckpackageCreateForm, this.STARTDATE, this.DUEDATE);
     });
@@ -98,33 +85,7 @@ export class WorkPackageCreateComponent implements OnInit {
         this.formValid = false;
       }
     });
-    /*  
-        this.validParseFormInputService.estimatedTimeValid$.subscribe((v) => {
-          console.log(v)
-          if(!v){
-            this.formValid = false;
-            console.log(v);
-          } */
-    //});
-
-
-
   }
-
-
-  /*   createForm() {
-      this.worckpackageCreateForm = this.fb.group({
-        [this.TITLE]: ['', Validators.required],
-        [this.DESCRIPTION]:[''],
-        [this.ESTIMATEDTIME]: ['', Validators.pattern(/^(\d+(?:[\.\,]\d{1,2})?)$/)],
-        [this.REMAININGHOURS]: ['', Validators.pattern(/^(\d+(?:[\.\,]\d{1,2})?)$/)],
-        [this.PERCENTAGEDONE]: ['', Validators.pattern(/^[1-9][0-9]?$|^100$/)],
-        [this.STARTDATE]: new FormControl({ value: '', disabled: true }),
-        [this.DUEDATE]: new FormControl({ value: '', disabled: true }) },
-     
-      )
-    
-    };  */
 
   get title() { return this.worckpackageCreateForm.get(this.TITLE) };
   get description() { return this.worckpackageCreateForm.get(this.DESCRIPTION) };
@@ -144,7 +105,6 @@ export class WorkPackageCreateComponent implements OnInit {
     }
     await this.geoLocationService.getGeoLocation().then((success) => {
       if (success != "Geolocation is not supported or acces is denied") {
-        // console.log("2. nach then Success: " + success)
         var description = descriptionText + '\n\n\n' + this.geoLocationService.url;
       }
       else {
@@ -158,19 +118,13 @@ export class WorkPackageCreateComponent implements OnInit {
         this.imgHandlingService.urls,
         this.validParseFormInputService.validateTime(this.worckpackageCreateForm.get(this.ESTIMATEDTIME).value),
         this.validParseFormInputService.validateTime(this.worckpackageCreateForm.get(this.REMAININGHOURS).value),
-        //this.parsePercentage(this.worckpackageCreateForm.get(this.PERCENTAGEDONE).value),
         this.validParseFormInputService.getPercentageDone(),
         this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.STARTDATE).value),
         this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.DUEDATE).value),
         this.settingsService.get('project')
       );
-
-
-
       this.worckpackageCreateForm.reset();
       this.imgHandlingService.urls = [];
-      // console.log("3. finally description:<br> " + description);
-
     });
   }
 
@@ -180,7 +134,5 @@ export class WorkPackageCreateComponent implements OnInit {
     a[1] = screen.height - 354 / 2;
     return a;
   }
-
-
 
 }

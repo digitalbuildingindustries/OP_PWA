@@ -1,7 +1,7 @@
 import { CheckConnectionService } from '../../services/check-connection.service';
-import { HandleSnackbarService } from '../../send-data-snackbar/handle-snackbar.service';
+import { HandleSnackbarService } from '../../snackbar-PopUp/handle-snackbar.service';
 import { SendDataToServerService } from '../../services/send-data-to-server.service';
-import { Subscription, timer, Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { WorkPackageDetailService } from './work-package-detail.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -56,8 +56,6 @@ export class WorkPackageDetailComponent implements OnInit {
       if (this.startDate == null || this.startDate == undefined)
         this.startDate = "-";
       this.project = e['_embedded']['project'].identifier;
-      console.log(e['_embedded']['project'].identifier);
-      console.log(e);
       this.spinner = false;
       this.descriptionArray = this.parseMapsString(this.description);
       this.wpObs$ = this.workPackageDetailService.wp$.subscribe((f) => {
@@ -92,17 +90,14 @@ export class WorkPackageDetailComponent implements OnInit {
           }
         });
       });
+    //Snackbar, if there is no internet connection
     let timer = Observable.timer(6000, 1000);
     let s: Subscription = timer.subscribe(() => {
       if (this.spinner) {
-        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, null, 9000);
+        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, 9000);
         s.unsubscribe();
       }
     });
-    /*   if (!this.checkConnectionService.internetConnectionStatus) {
-        console.log("OFFLINE")
-        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, null, 10000);
-      } */
   }
 
   ngOnDestroy() {
@@ -114,7 +109,6 @@ export class WorkPackageDetailComponent implements OnInit {
   }
 
   parseMapsString(s: string): string[] {
-
     var splitted = s.split("https://www.google.com/maps/search");
     splitted[1] = "https://www.google.com/maps/search" + splitted[1];
     this.geoWorks = true;
@@ -132,10 +126,7 @@ export class WorkPackageDetailComponent implements OnInit {
     }
     else {
       if (event.target.files && event.target.files[0]) {
-        console.log(event);
-
         var reader = new FileReader();
-
         reader.readAsDataURL(event.target.files[0]); // read file as data url
 
         reader.onload = (event) => { // called once readAsDataURL is completed
@@ -150,6 +141,5 @@ export class WorkPackageDetailComponent implements OnInit {
       }
     }
   }
-
 
 }

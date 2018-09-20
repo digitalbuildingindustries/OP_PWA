@@ -18,27 +18,20 @@ export class GeoLocationService {
       longitude: position.coords.longitude,
       latitude: position.coords.latitude
     }
-    //correct    console.log("Latitude: " + this.location.latitude + " Longitude: " + this.location.longitude );
-
     return this.url = "https://www.google.com/maps/search/" + this.location.latitude + "," + this.location.longitude;
   }
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
       return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition((position) => {
-      //  console.log("FINALLY RETURN VALUE      " + this.showPosition(position));
+        //  console.log("FINALLY RETURN VALUE      " + this.showPosition(position));
         resolve(this.showPosition(position));
-      }, (error)=> {
+      }, (error) => {
         resolve("Geolocation is not supported or acces is denied");
       }
-    )
-  );
-  
-    } 
-
+      )
+      );
+    }
   }
-
-  //https://www.google.com/maps/search/48.742125900000005,+9.2961405/@48.741121,9.3050005,15z
-
 
 }

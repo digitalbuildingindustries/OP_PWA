@@ -16,7 +16,6 @@ export class ValidParseFormInputService {
 
   }
   estimatedTimeValid$: Observable<boolean>;
-  //TIME VALIDATION
   estimatedTimeOld: any;
   remainingTimeOld: any;
   timeOld: any;
@@ -24,6 +23,8 @@ export class ValidParseFormInputService {
   estimatedTimeValid: boolean;
   remainingTimeValid: boolean;
   timeValid: boolean;
+
+  //Formvalidation for TIME (Remainign Hours, Estimated Time)
   parseTime(s: any, formGroup, formField: any) {
 
     var value;
@@ -34,18 +35,13 @@ export class ValidParseFormInputService {
     if (formField == 'estimatedTime') {
       value = formGroup.get(formField).value.split(" h")[0];
       this.timeOld = this.estimatedTimeOld;
-      //this.timeValid = this.estimatedTimeValid;
       input = document.getElementById('estimatedTime') as HTMLInputElement;
     }
     if (formField == 'remainingHours') {
       value = formGroup.get(formField).value.split(" h")[0];
       this.timeOld = this.remainingTimeOld;
-      //this.timeValid = this.remainingTimeValid;
       input = document.getElementById('remainingHours') as HTMLInputElement;
     }
-
-    // cursor Position
-    var cursorPosition = input.selectionStart;
 
     // if still undefined set ''
     if (this.timeOld == undefined) {
@@ -89,11 +85,11 @@ export class ValidParseFormInputService {
       value = '';
     }
     // if user want paste, delete all content
-    if (s.inputType == "insertFromPaste") { /// JE NACH DEM WO DER CURSOR IST LÖSCHEN ODER NICHT
+    if (s.inputType == "insertFromPaste") {
       value = '';
     }
 
-    // patch the value in the form validation
+    // patch the value in the form field
     formGroup.patchValue({
       [formField]: value + ' h'
     });
@@ -123,10 +119,11 @@ export class ValidParseFormInputService {
 
   }
 
+  // Parse Time to correct Format
   validateTime(s: string) {
     var a = [];
     if (String(s).length > 0 && s != null && s != undefined) {
-    s = s.split(" h")[0];
+      s = s.split(" h")[0];
 
       if (s.includes(",")) {
         a = s.split(",");
@@ -158,11 +155,7 @@ export class ValidParseFormInputService {
 
       if (dueDate._i.year < startDate._i.year) {
         valid = false;
-        //  this.worckpackageCreateForm.controls[this.DUEDATE].setErrors({'incrorrect': true});
-        //   console.log(this.worckpackageCreateForm.status);
         this.dateValid = false;
-        //this.dueDate$.unsubscribe();
-        //this.startDate$.unsubscribe();
       }
       if (dueDate._i.year == startDate._i.year && dueDate._i.month < startDate._i.month) {
         valid = false;
@@ -175,10 +168,9 @@ export class ValidParseFormInputService {
       if (valid) {
         this.dateValid = true;
       }
-    } else{
+    } else {
       this.dateValid = true;
     }
-
   }
 
   // DATE PARSING
@@ -194,12 +186,9 @@ export class ValidParseFormInputService {
       if (String(date).length == 1) {
         date = '0' + date;
       }
-      //console.log(year + "-" + month + "-" + date);
-      // return String(year + "-" + month + "-" + date);
       return (year + "" + month + "" + date);
     }
   }
-
 
   //PROGRESS VALIDATION
   //percentageDone
@@ -208,7 +197,6 @@ export class ValidParseFormInputService {
   displayedValueOld: any;
   // parse the percentage value to a valid format
   parsePercentage(s: any, formGroup: FormGroup, formField: string): void {
-
     // get the html element 
     var input = document.getElementById('percentageDone') as HTMLInputElement;
     // cursor Position
@@ -320,6 +308,7 @@ export class ValidParseFormInputService {
   }
 
   //https://codepen.io/chrisshaw/pen/yNOVaz
+  // set the caret Position
   setCaretPosition(ctrl, pos) {
     // Modern browsers
     if (ctrl.setSelectionRange) {
@@ -336,6 +325,7 @@ export class ValidParseFormInputService {
     }
   }
 
+ // checks if there is any input for percenteageDone-Field
   getPercentageDone() {
     if (this.percentageDone == undefined || this.percentageDone == null) {
       return 0;

@@ -5,16 +5,12 @@
       <h2 class="mat-h2" fxLayoutAlign="center">Settings</h2>
     </mat-card-title>
 
-    <!--   <mat-form-field [ngStyle]="{'width' : '100%'}">
-  <input name="title" matInput placeholder="URL" [(ngModel)]="url">
-</mat-form-field> -->
-
     <mat-form-field [ngStyle]="{'width' : '100%'}">
       <input name="apikey" matInput placeholder="Apikey" [(ngModel)]="apikey">
     </mat-form-field>
 
     <mat-form-field [ngStyle]="{'width' : '100%'}">
-      <mat-select placeholder="Project" [(ngModel)]="project">
+      <mat-select placeholder="{{project}}" [(ngModel)]="project">
         <mat-option *ngFor="let p of projects" [value]="p['identifier']">
           {{p['identifier']}}
         </mat-option>

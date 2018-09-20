@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
-import { WorkPackageDetailService } from './../work-packages/work-package-detail/work-package-detail.service';
-import { SettingsService } from './../settings/settings.service';
-import { HandleSnackbarService } from '../send-data-snackbar/handle-snackbar.service';
+import { WorkPackageDetailService } from '../work-packages/work-package-detail/work-package-detail.service';
+import { SettingsService } from '../settings/settings.service';
+import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
 import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,23 +14,20 @@ export class HeaderComponent implements OnInit {
 
   header: string;
   subheader: string;
-
   arrowBack: boolean;
   lastRoute: string;
   wpTitle: string;
   sup: Subscription;
 
-  constructor(public router: Router, public handleSnackbarService: HandleSnackbarService, private settingsService: SettingsService,
-    public workPackageDetailService: WorkPackageDetailService) {
-    this.arrowBack = false;
+  constructor(private router: Router, private settingsService: SettingsService, private workPackageDetailService: WorkPackageDetailService) {
   }
 
   ngOnInit() {
-
+    this.arrowBack = false;
     this.wpTitle = '';
-    // this.header = '';
     this.header = 'Project: ' + this.settingsService.get('project');
 
+    //listen for route changes
     this.router.events.subscribe((event) => {
 
       this.lastRoute = '/work-packages';
@@ -48,8 +45,6 @@ export class HeaderComponent implements OnInit {
           break;
 
         case '/':
-          /*    if (this.sup)
-               this.sup.unsubscribe(); */
           this.arrowBack = false;
           this.header = 'Project: ' + this.settingsService.get('project');
           break;
@@ -61,23 +56,12 @@ export class HeaderComponent implements OnInit {
               this.subheader = 'Work package: ' + e.title;
             }
           });
-
-
           break;
-
-        default:
 
       };
 
     });
 
-
   }
-
-  hideSnackbar() {
-    //   this.handleSnackbarService.show = false;
-    // console.log("Hides")
-  }
-
 
 }
