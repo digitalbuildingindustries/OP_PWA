@@ -1,4 +1,4 @@
-import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
+import { HandleSnackbarService } from '../snackbar-popup/handle-snackbar.service';
 import { CheckConnectionService } from '../services/check-connection.service';
 import { Observable, Subscription } from 'rxjs';
 import { SettingsService } from './settings.service';

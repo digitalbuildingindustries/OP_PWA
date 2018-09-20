@@ -1,6 +1,6 @@
 import { SettingsService } from '../settings/settings.service';
 import { WorkPackageModel } from '../work-packages/work-package.model';
-import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
+import { HandleSnackbarService } from '../snackbar-popup/handle-snackbar.service';
 import { DexieDbService } from '../dexieDb/dexie-db.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

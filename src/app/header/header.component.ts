@@ -1,7 +1,6 @@
 import { Subscription } from 'rxjs';
 import { WorkPackageDetailService } from '../work-packages/work-package-detail/work-package-detail.service';
 import { SettingsService } from '../settings/settings.service';
-import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
 import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 
