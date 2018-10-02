@@ -1,4 +1,5 @@
-import { HandleSnackbarService } from '../snackbar-popup/handle-snackbar.service';
+import { Router } from '@angular/router';
+import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
 import { CheckConnectionService } from '../services/check-connection.service';
 import { Observable, Subscription } from 'rxjs';
 import { SettingsService } from './settings.service';
@@ -17,15 +18,24 @@ export class SettingsComponent implements OnInit, OnDestroy {
   projects: string[];
 
   projects$: Observable<any>;
-  constructor(private settingsService: SettingsService, public checkConnectionService: CheckConnectionService,
-    private handleSnackbarService: HandleSnackbarService) { }
+  constructor(public settingsService: SettingsService, public checkConnectionService: CheckConnectionService,
+    private handleSnackbarService: HandleSnackbarService, public router: Router) { }
 
   ngOnInit() {
+    this.settingsService.formValidator = true;
+    this.router.events.subscribe((event) => {
+      if (this.router.url == '/settings') {
+        this.resetApiKey();
+      }
+    })
+
+    /*    Observable.timer(2000,1000).subscribe(() => {
+         this.formValidation();
+       }); */
 
     this.apikey = this.settingsService.get('apikey');
     this.project = this.settingsService.get('project');
     this.settingsService.getProjects().subscribe((e) => {
-      let f = e;
       this.projects = e['_embedded'].elements;
     })
     this.projects$ = this.settingsService.getProjects();
@@ -57,6 +67,23 @@ export class SettingsComponent implements OnInit, OnDestroy {
     if (this.settingsService.get('apikey') !== this.apikey || this.settingsService.get('project') !== this.project) {
       this.handleSnackbarService.fillSnackbarWithContent('settingsUpdated');
     }
+  }
+
+  formValidation() {
+    console.log(this.apikey);
+    this.settingsService.formValidator = false;
+    this.settingsService.testuss(this.apikey).then((apikey) => {
+      if (apikey === false) {
+        this.settingsService.formValidator = false;
+      }
+      else {
+        this.settingsService.formValidator = true;
+      }
+    })
+  };
+
+  resetApiKey() {
+    this.apikey = this.settingsService.get('apikey');
   }
 
 }

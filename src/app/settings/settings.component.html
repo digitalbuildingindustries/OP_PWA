@@ -6,7 +6,12 @@
     </mat-card-title>
 
     <mat-form-field [ngStyle]="{'width' : '100%'}">
-      <input name="apikey" matInput placeholder="Apikey" [(ngModel)]="apikey">
+      <input name="apikey" matInput placeholder="Apikey" [(ngModel)]="apikey" (ngModelChange)="formValidation()">
+      <div *ngIf="!this.settingsService.formValidator" class="alert alert-danger">
+        <mat-error *ngIf="!this.settingsService.formValidator">
+         No valid Api Key.
+                 </mat-error>
+      </div>
     </mat-form-field>
 
     <mat-form-field [ngStyle]="{'width' : '100%'}">
@@ -18,7 +23,7 @@
     </mat-form-field>
 
     <div fxLayout="row" fxLayoutAlign="center">
-      <button mat-raised-button (click)="save()" [ngStyle]="{'margin-bottom' : '6px'}" routerLink="/work-package-list">Update settings</button>
+      <button [disabled]="!this.settingsService.formValidator" mat-raised-button (click)="save()" [ngStyle]="{'margin-bottom' : '6px'}" routerLink="/work-package-list">Update settings</button>
     </div>
   </mat-card>
 
