@@ -20,7 +20,6 @@ export class CameraComponent implements OnInit {
 
   saveImg(event) {
     if (event.target.files && event.target.files[0]) {
-      console.log(event);
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url

@@ -1,6 +1,6 @@
 import { SettingsService } from '../settings/settings.service';
 import { WorkPackageModel } from '../work-packages/work-package.model';
-import { HandleSnackbarService } from '../snackbar-popup/handle-snackbar.service';
+import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
 import { DexieDbService } from '../dexieDb/dexie-db.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -54,9 +54,11 @@ export class SendDataToServerService {
     var formData = new FormData();
     if (img) {
       for (let element of img) {
-        var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
+       // var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
+        var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'img/'+this.guessImageMime(element) });
+      // var blobFile = new Blob([element], { type: 'img/html' });
         formData.append('file', blobFile, 'file');
-        formData.append('metadata', JSON.stringify({ 'fileName': 'Image_' + this.attachmentCount + this.guessImageMime(element) }));
+        formData.append('metadata', JSON.stringify({ 'fileName': 'Image_' + this.attachmentCount + "." + this.guessImageMime(element) }));
         this.attachmentCount++;
         await this.http.post<any>(this.attachmentURL, formData, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
         });
@@ -69,7 +71,6 @@ export class SendDataToServerService {
     let a;
     try {
       return this.http.post<WorkPackageModel>(this.URL, wpToSend, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
-        console.log(data),
           a = data,
           this.attachmentURL = a._links.addAttachment.href,
           this.attachmentCount = 0;
@@ -79,7 +80,7 @@ export class SendDataToServerService {
           'sent': true,
           'project': this.workpackage.project
         };
-        this.dexieService.saveStorage(w, this.dexieService.allWpDb).then((e) => console.log(e));
+        this.dexieService.saveStorage(w, this.dexieService.allWpDb);
       });
     }
     catch (e) {
@@ -157,17 +158,17 @@ export class SendDataToServerService {
       this.handleSnackbarService.fillSnackbarWithContent('wpSent', this.workpackage, null);
     }
     this.numberOfWorkpackages = 0;
-    this.router.navigate(['/work-package-list']);
+    this.router.navigate(['/']);
   };
 
   // Check Img Format
   guessImageMime(data) {
     if (data.charAt(11) == 'j') {
-      return ".jpeg";
+      return "jpeg";
     } else if (data.charAt(11) == 'g') {
-      return ".gif";
+      return "gif";
     } else if (data.charAt(11) == 'p') {
-      return ".png";
+      return "png";
     }
   }
 

@@ -1,4 +1,5 @@
-import { HandleSnackbarService } from './snackbar-popup/handle-snackbar.service';
+import { SettingsService } from './settings/settings.service';
+import { HandleSnackbarService } from './snackbar-PopUp/handle-snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
@@ -14,11 +15,13 @@ export class AppComponent implements OnInit {
   deferredPrompt: any;
 
   constructor(
-    public handleSnackbarService: HandleSnackbarService,
+    public handleSnackbarService: HandleSnackbarService, public settingsService: SettingsService
   ) {
     this.sb = this.handleSnackbarService.show;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.settingsService.checkdefaultSettings();
+  }
 
 }

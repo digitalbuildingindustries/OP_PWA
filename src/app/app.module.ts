@@ -24,7 +24,7 @@ import { CameraComponent } from './work-packages/work-package-create/camera/came
 import { HeaderComponent } from './header/header.component';
 import { WorkPackagesComponent } from './work-packages/work-packages-list/work-packages-list.component';
 import { WorkPackageCreateComponent } from './work-packages/work-package-create/work-package-create.component';
-import { SendDataSnackbarComponent } from './snackbar-popup/send-data-snackbar.component';
+import { SendDataSnackbarComponent } from './snackbar-PopUp/send-data-snackbar.component';
 import { WorkPackageDetailComponent } from './work-packages/work-package-detail/work-package-detail.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -32,7 +32,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { DexieDbService } from './dexieDb/dexie-db.service';
 import { HandleDataService } from './services/handle-data.service';
 import { SendDataToServerService } from './services/send-data-to-server.service';
-import { HandleSnackbarService } from './snackbar-popup/handle-snackbar.service';
+import { HandleSnackbarService } from './snackbar-PopUp/handle-snackbar.service';
 import { ImgHandlingService } from './work-packages/work-package-create/img-handling.service';
 import { CheckConnectionService } from './services/check-connection.service';
 
