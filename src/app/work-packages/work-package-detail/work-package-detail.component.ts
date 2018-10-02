@@ -1,5 +1,5 @@
 import { CheckConnectionService } from '../../services/check-connection.service';
-import { HandleSnackbarService } from '../../snackbar-PopUp/handle-snackbar.service';
+import { HandleSnackbarService } from '../../snackbar-popup/handle-snackbar.service';
 import { SendDataToServerService } from '../../services/send-data-to-server.service';
 import { Subscription, Observable } from 'rxjs';
 import { WorkPackageDetailService } from './work-package-detail.service';
