@@ -1,5 +1,5 @@
 import { SendDataToServerService } from './send-data-to-server.service';
-import { HandleSnackbarService } from '../snackbar-PopUp/handle-snackbar.service';
+import { HandleSnackbarService } from '../snackbar-popup/handle-snackbar.service';
 import { WorkPackageModel } from '../work-packages/work-package.model';
 import { CheckConnectionService } from './check-connection.service';
 import { DexieDbService } from '../dexieDb/dexie-db.service';

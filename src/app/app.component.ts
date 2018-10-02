@@ -1,5 +1,5 @@
 import { SettingsService } from './settings/settings.service';
-import { HandleSnackbarService } from './snackbar-PopUp/handle-snackbar.service';
+import { HandleSnackbarService } from './snackbar-popup/handle-snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
