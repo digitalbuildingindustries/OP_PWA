@@ -55,9 +55,15 @@ export class SendDataToServerService {
     var formData = new FormData();
     if (img) {
       for (let element of img) {
+
         // var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
         var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'img/' + this.guessImageMime(element) });
         // var blobFile = new Blob([element], { type: 'img/html' });
+
+       // var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
+        var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'img/' + this.guessImageMime(element) });
+      // var blobFile = new Blob([element], { type: 'img/html' });
+
         formData.append('file', blobFile, 'file');
         formData.append('metadata', JSON.stringify({ 'fileName': 'Image_' + this.attachmentCount + "." + this.guessImageMime(element) }));
         this.attachmentCount++;
@@ -73,7 +79,7 @@ export class SendDataToServerService {
     let a;
     try {
       return this.http.post<WorkPackageModel>(this.URL, wpToSend, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
-        a = data,
+          a = data,
           this.attachmentURL = a._links.addAttachment.href,
           this.attachmentCount = 0;
         let w = {
@@ -160,6 +166,7 @@ export class SendDataToServerService {
       this.handleSnackbarService.fillSnackbarWithContent('wpSent', this.workpackage, null);
     }
     this.numberOfWorkpackages = 0;
+
     if (this.router.url === "/") {
       setTimeout(() => {
         location.reload();
@@ -169,6 +176,9 @@ export class SendDataToServerService {
     } else {
       this.router.navigate(['/']);
     }
+
+    this.router.navigate(['/']);
+
   };
 
   // Check Img Format
