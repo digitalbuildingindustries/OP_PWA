@@ -56,9 +56,14 @@ export class HeaderComponent implements OnInit {
             }
           });
           break;
-
       };
 
+      if (this.header.length > 25) {
+        this.header = this.header.slice(0, 25) + '...';
+      }
+      if (this.subheader.length > 25) {
+        this.subheader = this.subheader.slice(0, 25) + '...';
+      }
     });
 
   }

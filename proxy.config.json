@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://pwa.openproject.com",
+    "target": "https://oppwa.openproject.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

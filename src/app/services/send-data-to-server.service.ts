@@ -12,7 +12,7 @@ export class SendDataToServerService {
   public workpackageCount: number;
   public workpackage: WorkPackageModel;
   public workpackages: WorkPackageModel[];
-  private readonly URL;
+  private URL;
   private readonly APIKEY;
   private readonly HTTPOPTIONSWORKPACKAGE;
   public attachmentURL;
@@ -26,7 +26,8 @@ export class SendDataToServerService {
     private router: Router, private http: HttpClient, private settingsService: SettingsService) {
 
     if (localStorage.getItem("apikey") === null || localStorage.getItem("project") === null) {
-      localStorage.setItem('apikey', '5a743dbbf7889f7d54a9cc9559590bc16c04d880ed970661ab734bde5674fcd2');
+      localStorage.setItem('apikey', '5a743dbbf7889f7d54a9cc9559590bc16c04d880ed970661ab734bde5674fcd2'); //key für pwa.openproject.com
+     // localStorage.setItem('apikey', '4dd0e471f9ce79ac2a0fb50811a8c36984cd0c75957b0c301eeba0ea3d173901'); //key für oppwa.openproject
       localStorage.setItem('project', 'testprojekt');
     }
 
@@ -54,9 +55,9 @@ export class SendDataToServerService {
     var formData = new FormData();
     if (img) {
       for (let element of img) {
-       // var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
-        var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'img/'+this.guessImageMime(element) });
-      // var blobFile = new Blob([element], { type: 'img/html' });
+        // var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
+        var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'img/' + this.guessImageMime(element) });
+        // var blobFile = new Blob([element], { type: 'img/html' });
         formData.append('file', blobFile, 'file');
         formData.append('metadata', JSON.stringify({ 'fileName': 'Image_' + this.attachmentCount + "." + this.guessImageMime(element) }));
         this.attachmentCount++;
@@ -68,10 +69,11 @@ export class SendDataToServerService {
 
   //3. send WP
   async sendW(wpToSend: any) {
+    this.URL = '/api/v3/projects/' + this.settingsService.get('project') + '/work_packages';
     let a;
     try {
       return this.http.post<WorkPackageModel>(this.URL, wpToSend, this.HTTPOPTIONSWORKPACKAGE).toPromise().then(data => {
-          a = data,
+        a = data,
           this.attachmentURL = a._links.addAttachment.href,
           this.attachmentCount = 0;
         let w = {
@@ -158,7 +160,15 @@ export class SendDataToServerService {
       this.handleSnackbarService.fillSnackbarWithContent('wpSent', this.workpackage, null);
     }
     this.numberOfWorkpackages = 0;
-    this.router.navigate(['/']);
+    if (this.router.url === "/") {
+      setTimeout(() => {
+        location.reload();
+      },
+        2000);
+
+    } else {
+      this.router.navigate(['/']);
+    }
   };
 
   // Check Img Format

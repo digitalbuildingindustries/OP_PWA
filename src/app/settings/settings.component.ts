@@ -43,7 +43,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     let timer = Observable.timer(6000, 1000);
     let s: Subscription = timer.subscribe(() => {
       if (!this.checkConnectionService.internetConnectionStatus) {
-        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, 9000);
+        this.handleSnackbarService.fillSnackbarWithContent('noInternet', null, null, 3000);
         s.unsubscribe();
       }
     });
