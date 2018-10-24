@@ -55,7 +55,6 @@ export class SendDataToServerService {
     var formData = new FormData();
     if (img) {
       for (let element of img) {
-
         // var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'text/html' });
         var blobFile = new Blob([this.b64ToUint8Array(element)], { type: 'img/' + this.guessImageMime(element) });
         // var blobFile = new Blob([element], { type: 'img/html' });
