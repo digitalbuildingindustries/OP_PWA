@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+## Installation
+
+1. Install a node environment. We suggest you use nodenv on \*nix environments. Follow these steps to install it: https://github.com/nodenv/nodenv#basic-github-checkout
+
+2. Clone this repository
+
+3. Run `npm install` to install all dependencies
+
 ## Development server
 
 Run `ng serve -o --proxy-config proxy.config.json` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
