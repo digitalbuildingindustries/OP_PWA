@@ -36,7 +36,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.apikey = this.settingsService.get('apikey');
     this.project = this.settingsService.get('project');
     this.settingsService.getProjects().subscribe((e) => {
-      this.projects = e['_embedded'].elements;
+      this.projects = e;
     })
     this.projects$ = this.settingsService.getProjects();
 

@@ -13,6 +13,7 @@ export class SettingsService {
   project: string;
   HTTPOPTIONSWORKPACKAGE;
   projects$: Observable<any>;
+  project$: Observable<any>;
   formValidator: boolean;
 
   async testuss(apikey: string): Promise<boolean> {
@@ -30,7 +31,6 @@ export class SettingsService {
   }
 
 
-
   //ef8772986d022ed4ea524fcec0d889725b711b6df62f931529eac722b2fed7f7
   constructor(private http: HttpClient, private defaultSettingsService: DefaultSettingsService) {
 
@@ -45,7 +45,7 @@ export class SettingsService {
       })
     };
     this.formValidator = true;
-     
+
 
   }
 
@@ -58,10 +58,14 @@ export class SettingsService {
   };
 
   getProjects(): Observable<any> {
-    return this.projects$ = this.http.get('/api/v3/projects', this.HTTPOPTIONSWORKPACKAGE);
+    return this.projects$ = this.http.get('/bcf/2.1/projects');
   }
 
-  checkdefaultSettings(){
+  getProject(id:number): Observable<any> {
+    return this.project$ = this.http.get('/bcf/2.1/projects/' + id);
+  }
+
+  checkdefaultSettings() {
     if (localStorage.getItem("apikey") === null || localStorage.getItem("project") === null) {
       this.defaultSettingsService.setDefaultSettings();
       location.reload();
