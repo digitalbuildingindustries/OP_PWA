@@ -23,6 +23,15 @@
       </mat-form-field>
 
       <mat-accordion>
+        <img mat-card-image alt="viewport0" src="../../../assets/model/snapshot_0.png" style="width: 200px; margin: 0 20px 0 0;">
+        <img mat-card-image alt="viewport1" src="../../../assets/model/snapshot_1.png" style="width: 200px; margin: 0 20px 0 0;">
+        <img mat-card-image alt="viewport2" src="../../../assets/model/snapshot_2.png" style="width: 200px; margin: 0 20px 0 0;">
+        <img mat-card-image alt="viewport3" src="../../../assets/model/snapshot_3.png" style="width: 200px; margin: 0 20px 0 0;">
+        <img mat-card-image alt="viewport4" src="../../../assets/model/snapshot_4.png" style="width: 200px; margin: 0 20px 0 0;">
+        <img mat-card-image alt="viewport5" src="../../../assets/model/snapshot_5.png" style="width: 200px; margin: 0 20px 0 0;">
+      </mat-accordion>
+
+      <mat-accordion>
 
         <mat-expansion-panel>
 
@@ -83,7 +92,7 @@
             <mat-datepicker touchUi="true" #dueDate disabled="false"></mat-datepicker>
           </mat-form-field>
 
-          <mat-form-field>
+          <mat-form-field style="display: none;">
             <input matInput placeholder="Progress (1 - 100%)" formControlName="percentageDone" (input)="validParseFormInputService.parsePercentage($event, this.worckpackageCreateForm, this.PERCENTAGEDONE)"
               #percentageDone id="percentageDone">
             <div *ngIf="percentageDone.invalid && (percentageDone.dirty || percentageDone.touched)" class="alert alert-danger">
@@ -109,5 +118,5 @@
       (click)="save()" [ngStyle]="{'margin-bottom' : '6px'}">Create Work package</button>
 
   </div>
-  
+
 </mat-card>

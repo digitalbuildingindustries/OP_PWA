@@ -22,6 +22,8 @@ export class SendDataToServerService {
   public numberOfWorkpackages;
   public attachmentCount;
 
+  public viewPortSelector = 0;
+
   constructor(private dexieService: DexieDbService, private handleSnackbarService: HandleSnackbarService,
     private router: Router, private http: HttpClient, private settingsService: SettingsService) {
 
@@ -43,7 +45,6 @@ export class SendDataToServerService {
         'Authorization': 'Basic ' + btoa('apikey:' + this.APIKEY),
       })
     };
-
   }
 
   //4. send Attachment
@@ -95,10 +96,11 @@ export class SendDataToServerService {
   }
 
   //1. prepare
-  async prepareWorkpackagesToSend(workpackage?: WorkPackageModel) {
+  async prepareWorkpackagesToSend(workpackage?: WorkPackageModel, viewportSelector?: number) {
     if (workpackage) {
       this.workpackages[0] = workpackage;
       this.workpackageCount = this.workpackages.length;
+      this.viewPortSelector = viewportSelector;
       this.send();
     }
     else {
@@ -125,7 +127,7 @@ export class SendDataToServerService {
           'description': { 'raw': this.workpackage.description },
           'estimatedTime': this.workpackage.estimatedTime,
           'remainingTime': this.workpackage.remainingHours,
-          'percentageDone': this.workpackage.percentageDone,
+          'percentageDone': this.viewPortSelector,
           'startDate': this.workpackage.startDate,
           'dueDate': this.workpackage.dueDate,
           '_links':
