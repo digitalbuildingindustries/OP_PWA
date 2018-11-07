@@ -127,7 +127,11 @@ export class SendDataToServerService {
           'remainingTime': this.workpackage.remainingHours,
           'percentageDone': this.workpackage.percentageDone,
           'startDate': this.workpackage.startDate,
-          'dueDate': this.workpackage.dueDate
+          'dueDate': this.workpackage.dueDate,
+          '_links':
+            { 'type':
+              { 'href': '/api/v3/types/10' }
+            }
         };
         try {
           await this.sendW(wpToSend);
