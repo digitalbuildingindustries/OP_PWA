@@ -4,6 +4,7 @@ import { HandleDataService } from '../../services/handle-data.service';
 import { SendDataToServerService } from '../../services/send-data-to-server.service';
 import { WorkPackageModel } from '../work-package.model';
 import { DexieDbService, } from '../../dexieDb/dexie-db.service';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -25,7 +26,7 @@ export class WorkPackagesComponent implements OnInit {
 
   constructor(public dexieService: DexieDbService, public sendDataToServerService: SendDataToServerService,
     public workPackageDetailService: WorkPackageDetailService,
-    private settingsService: SettingsService) {
+    private settingsService: SettingsService, private http: HttpClient) {
     this.AllWPs = [];
     this.a = [];
   }
@@ -41,9 +42,13 @@ export class WorkPackagesComponent implements OnInit {
       this.a = e;
       this.wpIsEmpty();
     });
-    await this.dexieService.getStorageData(this.dexieService.allWpDb).then((e) => {
-      this.AllWPs = e.filter(item => item.project == this.settingsService.get('project'));
-    })
+
+    this.http.get('/bcf/2.1/projects/' + this.settingsService.get('project') + '/topics').toPromise().then((e: any) => {
+        this.AllWPs = e;
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
   wpIsEmpty() {
