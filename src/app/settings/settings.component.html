@@ -16,8 +16,8 @@
 
     <mat-form-field [ngStyle]="{'width' : '100%'}">
       <mat-select placeholder="{{project}}" [(ngModel)]="project">
-        <mat-option *ngFor="let p of projects" [value]="p['identifier']">
-          {{p['identifier']}}
+        <mat-option *ngFor="let p of projects" [value]="p['name']">
+          {{p['name']}}
         </mat-option>
       </mat-select>
     </mat-form-field>

@@ -30,9 +30,9 @@ export class HandleDataService {
   }
 
   // When a user creates a work package, this method is called to receive and handle the data
-  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string, percentageDone?: any, startDate?: any, dueDate?: any, project?: any) {
-   
-    //generate Timestamp for unique id 
+  handleData(id: number, t: string, d: string, u?: string[], eT?: string, rH?: string, percentageDone?: any, startDate?: any, dueDate?: any, project?: any, viewportSelector?: any) {
+
+    //generate Timestamp for unique id
     let date = new Date();
     this.workPackageModel = { 'id': 't' + date.getTime(), 'title': t, 'description': d, 'img': u, 'sent': false, 'estimatedTime': eT, 'remainingHours': rH, 'percentageDone': percentageDone, 'startDate': startDate, 'dueDate': dueDate, 'project': project };
 
@@ -48,7 +48,7 @@ export class HandleDataService {
     }
     // If user=online --> senDataToServerService will handle the next steps
     else {
-      this.sendDataToServerService.prepareWorkpackagesToSend(this.workPackageModel);
+      this.sendDataToServerService.prepareWorkpackagesToSend(this.workPackageModel, viewportSelector);
       // this.handleSnackbarService.fillSnackbarWithContent(true, this.workPackageModel);
     }
 

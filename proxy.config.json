@@ -1,8 +1,12 @@
 {
   "/api/*": {
-    "target": "https://pwa.openproject.com",
+    "target": "http://localhost:3000",
     "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true
+    "logLevel": "debug"
+  },
+  "/bcf/*": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "logLevel": "debug"
   }
 }

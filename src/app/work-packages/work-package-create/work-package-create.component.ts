@@ -33,6 +33,7 @@ export class WorkPackageCreateComponent implements OnInit {
   formValid: boolean;
   dateValid: boolean;
 
+  public viewportSelector:number;
   public myModel: string
   public modelWithValue: string
   public formControlInput: FormControl = new FormControl()
@@ -85,6 +86,18 @@ export class WorkPackageCreateComponent implements OnInit {
         this.formValid = false;
       }
     });
+
+
+    const that = this;
+    Array.prototype.forEach.call(document.getElementsByClassName('mat-card-image'), function(e, i) {
+      e.addEventListener('click', function () {
+        Array.prototype.forEach.call(document.getElementsByClassName('mat-card-image'), function(e) {
+          e.style.border = '0px';
+        })
+        e.style.border = '1px solid darkblue';
+        that.viewportSelector = i + 1;
+      });
+    });
   }
 
   get title() { return this.worckpackageCreateForm.get(this.TITLE) };
@@ -121,7 +134,8 @@ export class WorkPackageCreateComponent implements OnInit {
         this.validParseFormInputService.getPercentageDone(),
         this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.STARTDATE).value),
         this.validParseFormInputService.parseDate(this.worckpackageCreateForm.get(this.DUEDATE).value),
-        this.settingsService.get('project')
+        this.settingsService.get('project'),
+        this.viewportSelector
       );
       this.worckpackageCreateForm.reset();
       this.imgHandlingService.urls = [];

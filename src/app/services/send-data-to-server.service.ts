@@ -22,13 +22,15 @@ export class SendDataToServerService {
   public numberOfWorkpackages;
   public attachmentCount;
 
+  public viewPortSelector = 0;
+
   constructor(private dexieService: DexieDbService, private handleSnackbarService: HandleSnackbarService,
     private router: Router, private http: HttpClient, private settingsService: SettingsService) {
 
     if (localStorage.getItem("apikey") === null || localStorage.getItem("project") === null) {
       localStorage.setItem('apikey', '5a743dbbf7889f7d54a9cc9559590bc16c04d880ed970661ab734bde5674fcd2'); //key für pwa.openproject.com
      // localStorage.setItem('apikey', '4dd0e471f9ce79ac2a0fb50811a8c36984cd0c75957b0c301eeba0ea3d173901'); //key für oppwa.openproject
-      localStorage.setItem('project', 'testprojekt');
+      localStorage.setItem('project', 'Hackathon');
     }
 
     this.allowTosendData = true;
@@ -43,7 +45,6 @@ export class SendDataToServerService {
         'Authorization': 'Basic ' + btoa('apikey:' + this.APIKEY),
       })
     };
-
   }
 
   //4. send Attachment
@@ -95,10 +96,11 @@ export class SendDataToServerService {
   }
 
   //1. prepare
-  async prepareWorkpackagesToSend(workpackage?: WorkPackageModel) {
+  async prepareWorkpackagesToSend(workpackage?: WorkPackageModel, viewportSelector?: number) {
     if (workpackage) {
       this.workpackages[0] = workpackage;
       this.workpackageCount = this.workpackages.length;
+      this.viewPortSelector = viewportSelector;
       this.send();
     }
     else {
@@ -125,9 +127,13 @@ export class SendDataToServerService {
           'description': { 'raw': this.workpackage.description },
           'estimatedTime': this.workpackage.estimatedTime,
           'remainingTime': this.workpackage.remainingHours,
-          'percentageDone': this.workpackage.percentageDone,
+          'percentageDone': this.viewPortSelector,
           'startDate': this.workpackage.startDate,
-          'dueDate': this.workpackage.dueDate
+          'dueDate': this.workpackage.dueDate,
+          '_links':
+            { 'type':
+              { 'href': '/api/v3/types/10' }
+            }
         };
         try {
           await this.sendW(wpToSend);

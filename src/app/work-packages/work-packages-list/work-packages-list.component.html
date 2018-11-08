@@ -58,9 +58,9 @@
     </ng-container>
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef fxFlex="20%"> Id </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef fxFlex="20%"> GUID </mat-header-cell>
       <mat-cell *matCellDef="let element" (click)="workPackageDetailService.getWorkPackage(element)" routerLink="/work-package-detail"
-        fxFlex="20%"> {{element.id}}</mat-cell>
+        fxFlex="20%"> {{element.guid}}</mat-cell>
     </ng-container>
 
 
